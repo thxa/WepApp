@@ -6,6 +6,7 @@ services:
   web:
     build: .
     command: python3 api/manage.py runserver 0.0.0.0:8000
+    # command: gunicorn --env DJANGO_SETTINGS_MODULE=api.api.settings api.api.wsgi #—-log-file
     volumes:
       - .:/code
     ports:

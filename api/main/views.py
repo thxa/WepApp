@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView, Response
-from main.models import Video, Category
+from main.models import Video, Category, Season
 from main import serializers
 from django.shortcuts import get_object_or_404
 from django.views import View
@@ -93,7 +93,6 @@ class CategoryListAPIView(APIView):
         serializer = serializers.CategorySerializer(categories, many=True)
         return Response(serializer.data)
 
-
     def post(self, request, format=None):
         serializer = serializers.CategorySerializer(data=request.data)
 
@@ -109,10 +108,8 @@ class CategoryDetileAPIView(APIView):
     serializer_class = serializers.CategorySerializer
 
     def get(self, request, slug, format=None):
-
         category = get_object_or_404(Category, slug=slug)
         serializer = serializers.CategorySerializer(category)
-
         return Response(serializer.data)
 
     # def post(self, request, format=None):pass
@@ -128,7 +125,7 @@ class CategoryDetileAPIView(APIView):
 
     def patch(self, request, slug, format=None):
         category = get_object_or_404(Category, slug=slug)
-        serializer = serializers.VideoSerializer(category, data=request.data)
+        serializer = serializers.CategorySerializer(category, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -140,6 +137,74 @@ class CategoryDetileAPIView(APIView):
         category.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+
+
+class SeasonListAPIView(APIView):
+    '''  This is Season List API View   '''
+    serializer_class = serializers.SeasonSerializer
+
+    def get(self, request ,format=None):
+        seasones = Season.objects.all()
+        serializer = serializers.SeasonSerializer(seasones, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = serializers.SeasonSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class SeasonDetileAPIView(APIView):
+    ''' This is Season Detile API View  '''
+    serializer_class = serializers.SeasonSerializer
+
+    def get(self, request, slug, format=None):
+        season = get_object_or_404(Season, slug=slug)
+        serializer = serializers.SeasonSerializer(season)
+        # season.get_next_in_order()
+        # serializer.data += {"next": season.video.get_next_in_order()}
+        return Response(serializer.data)
+
+    # def post(self, request, format=None):pass
+
+    def put(self, request, slug, format=None):
+        season = get_object_or_404(Season, slug=slug)
+        serializer = serializers.CategorySerializer(season, data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def patch(self, request, slug, format=None):
+        season = get_object_or_404(Season, slug=slug)
+        serializer = serializers.SeasonSerializer(season, data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, slug, format=None):
+        season = get_object_or_404(Season, slug=slug)
+        category.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class IndexView(View):
+    template_name = 'index.html'
+
+    def get(self, request):
+        return render(request, self.template_name, context=None)
+
+class VideoCreate(View):
+    template_name = 'main/create_video.html'
+
+    def get(self, request):
+        return render(request, self.template_name, context=None)
 
 # @api_view(['GET', 'PUT', 'PATCH','DELETE'])
 # def video_detile(request, slug):

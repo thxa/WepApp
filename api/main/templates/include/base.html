@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static 'css/base.css'%}">
+    <title> video web</title>
+  </head>
+  <body>
+
+    <header>
+
+      <nav class="nav">
+        <div class="nav-item">
+          <a href="/">Home</a>
+        </div>
+        <div id="categories" class="nav-item">
+          categories
+        </div>
+        <div class="nav-item">about</div>
+        {% block header %}
+        <div class="nav-item">
+          <a href="/create/">add</a>
+        </div>
+        {% endblock %}
+      </nav>
+    </header>
+
+    <main id="app">
+      {% block main %}
+
+      {% endblock %}
+    </main>
+    <footer>
+      <h4>  By <a target="_blank" href="https://github.com/thxa" style="a:link { color: black;}">Thamer ALharbi</a></h4>
+    </footer>
+
+  </body>
+
+</html>
+{% block script %}
+<script type="text/javascript" src="{% static 'js/video_api.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/categories_api.js' %}"></script>
+{% endblock %}
+<!--
+<div class="block">
+  <div class="title"> name</div>
+
+  <div class="img">
+    <img src="#" alt="photo">
+  </div>
+
+  <div class="video"> url_video</div>
+</div> -->

@@ -23,6 +23,9 @@ urlpatterns = [
     path('videos/<slug>/', views.VideoDetileAPIView.as_view()),
     path('categories/', views.CategoryListAPIView.as_view()),
     path('categories/<slug>/', views.CategoryDetileAPIView.as_view()),
+    path('seasones/', views.SeasonListAPIView.as_view()),
+    path('seasones/<slug>/', views.SeasonDetileAPIView.as_view()),
+
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

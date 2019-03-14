@@ -1,0 +1,35 @@
+{% extends "../include/base.html" %}
+
+{% load static %}
+
+{% block header %}
+<!-- <div class="nav-item">add</div> -->
+{% endblock %}
+
+{% block main %}
+<div id="form">
+
+  <div class="input">
+    <input type="text" name="name" value="">
+  </div>
+  <div class="input">
+    <input type="text" name="photo_url" value="">
+  </div>
+  <div class="input">
+    <input type="text" name="url" value="">
+  </div>
+  <div class="input">
+    <select id="category" name="category"></select>
+  </div>
+
+  <button onclick="save()">save</button>
+</div>
+
+{% endblock %}
+
+
+{% block script %}
+
+<script type="text/javascript" src="{% static 'js/categories_api.js' %}"></script>
+
+{% endblock %}

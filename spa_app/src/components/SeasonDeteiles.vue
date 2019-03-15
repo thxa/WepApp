@@ -6,27 +6,31 @@
     <div class="">
       <img :src="season.photo_url">
     </div>
-    <div class="footer">
-            slug: {{season.slug}}
+    <div class="">
+            created: {{season.created}}<br>
+            slug: {{season.slug}} <br>
+            category: {{season.category}} <br>
       <div class="columns">
-        <div class="column" v-for="episod in episodes"
-        v-bind:key="episod.id">
-        {{episod.id}}
+        <div class="column" v-for="category in season.category"
+        v-bind:key="category.id">
+        {{category}}
         </div>
       </div>
-
+      episodes: {{season.episodes}}
+      <div class="columns">
+        <router-link class="column" v-for="episod in season.episodes"
+        :to="{ name: 'Video', params: {slug: episod} }"
+        v-bind:key="episod">
+        {{episod}}
+      </router-link>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import Season from '@/components/Season.vue'
 import api from '@/api/index.js'
 export default {
-  name: 'Index',
-  components: {
-    'season': Season
-  },
   data () {
     return {
       slug: this.$route.params.slug,
@@ -35,12 +39,6 @@ export default {
   },
   methods: {
     loadSeason () {
-      // if (this.slug === 'movie') {
-      //   this.seasones = this.movie
-      // } else {
-      //   this.seasones = this.anime
-      // }
-
       api.getSeason(this.slug)
         .then(data => {
           console.log(data)
@@ -51,12 +49,12 @@ export default {
   watch: {
     '$route' (to, from) {
       this.slug = to.params.slug
-      this.loadSeason(this.slug)
+      this.loadSeason()
       console.log(this.$route.query.page)
     }
   },
   created () {
-    this.loadSeason(this.slug)
+    this.loadSeason()
   }
 }
 </script>

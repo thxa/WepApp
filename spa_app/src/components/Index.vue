@@ -37,6 +37,11 @@ export default {
       //   this.seasones = this.anime
       // }
 
+      // if (this.slug === 'season') {
+      //   this.seasones = this.videos
+      // } else {
+      //   this.seasones = this.season
+      // }
       api.getSeasones()
         .then(data => {
           console.log(data)

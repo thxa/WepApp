@@ -2,10 +2,9 @@ from main.models import Video, Category, Season
 from rest_framework import serializers
 
 class VideoSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Video
-        fields = ('id', 'name', 'photo_url', 'url', 'created', 'slug')
+        fields = ('id', 'name', 'photo_url', 'url', 'season', 'created', 'slug')
 
 
     def create(self, validated_data):
@@ -35,6 +34,11 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class SeasonSerializer(serializers.ModelSerializer):
+    # category = serializers.StringRelatedField(many=True)
+    # episodes = serializers.StringRelatedField(many=True)
+    category = serializers.SlugRelatedField(many=True, read_only=True, slug_field='slug')
+    episodes = serializers.SlugRelatedField(many=True, read_only=True, slug_field='slug')
+
     class Meta:
         model = Season
         fields = ('id', 'name', 'slug', 'photo_url', 'created', 'category', 'episodes')

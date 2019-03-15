@@ -51,10 +51,8 @@ class VideoDetileAPIView(APIView):
     serializer_class = serializers.VideoSerializer
 
     def get(self, request, slug, format=None):
-
         video = get_object_or_404(Video, slug=slug)
         serializer = serializers.VideoSerializer(video)
-
         return Response(serializer.data)
 
     # def post(self, request, format=None):pass
@@ -68,7 +66,7 @@ class VideoDetileAPIView(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def patch(self, request, slug, format=None):
+    def patch(self, request, pk, format=None):
         video = get_object_or_404(Video, slug=slug)
         serializer = serializers.VideoSerializer(video, data=request.data)
 

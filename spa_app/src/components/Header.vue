@@ -28,7 +28,7 @@
         </div>
 
         <div class="navbar-end">
-            <router-link class="navbar-item is-tab" to="/add/" exact>add</router-link>
+            <router-link class="navbar-item is-tab" to="/season/create/">Create</router-link>
         </div>
       </div>
     </nav>

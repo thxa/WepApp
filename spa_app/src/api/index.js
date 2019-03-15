@@ -18,6 +18,14 @@ const api = {
           resolve(response.data)
         })
     })
+  },
+  getVideo (slug) {
+    return new Promise((resolve) => {
+      axios.get(`/api/v1/videos/${slug}/`)
+        .then(response => {
+          resolve(response.data)
+        })
+    })
   }
 }
 

@@ -1,22 +1,14 @@
 <template>
   <div>
-        <!-- <main>
-        </main> -->
-    <!--
-    <div class="block">
-      <div class="title"> name</div>
-
-      <div class="img">
-        <img src="#" alt="photo">
-      </div>
-
-      <div class="video"> url_video</div>
-
-    </div> -->
-    <Header></Header>
-    <router-view/>
-    <Footer></Footer>
-
+    <section class="hero is-primary is-medium">
+      <Header></Header>
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <router-view/>
+    </div>
+  </div>
+      <Footer></Footer>
+    </section>
   </div>
 </template>
 

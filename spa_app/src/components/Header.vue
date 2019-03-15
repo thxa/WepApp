@@ -1,38 +1,33 @@
 <template>
-  <header>
-    <nav class="navbar has-shadow">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="#">
-          <img src="logo.png" alt="Webapp">
-        </a>
-      </div>
 
-      <div class="navbar-burger burger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-
-      <div class="navbar-menu">
-        <div class="navbar-start">
-
-          <router-link class="navbar-item is-tab" to="/" exact>Home</router-link>
-          <router-link class="navbar-item is-tab" to="/about/">about</router-link>
-          <router-link class="navbar-item is-tab" :to="{ name: 'category', params: { slug: 'anime' } }">anime</router-link>
-          <router-link class="navbar-item is-tab" :to="{ name: 'category', params: { slug: 'movie' } }">movie</router-link>
-          <div class="navbar-dropdown">
-            <div id="categories" class="navbar-item">
-              categories
+<div class="">
+  <div class="hero-head">
+      <nav class="navbar">
+        <div class="container">
+          <div class="navbar-brand">
+            <a class="navbar-item">
+              <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
+            </a>
+            <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </div>
+          <div id="navbarMenuHeroA" class="navbar-menu">
+            <div class="navbar-end">
+              <router-link class="navbar-item is-tab" to="/" exact>Home</router-link>
+              <router-link class="navbar-item is-tab" to="/about/">about</router-link>
+              <router-link class="navbar-item is-tab" :to="{ name: 'category', params: { slug: 'anime' } }">anime</router-link>
+              <router-link class="navbar-item is-tab" :to="{ name: 'category', params: { slug: 'movie' } }">movie</router-link>
+              <router-link class="navbar-item is-tab" to="/videos/">videos</router-link>
+              <router-link class="navbar-item is-tab" to="/season/create/">Create</router-link>
             </div>
           </div>
         </div>
-
-        <div class="navbar-end">
-            <router-link class="navbar-item is-tab" to="/season/create/">Create</router-link>
-        </div>
-      </div>
-    </nav>
-  </header>
+      </nav>
+    </div>
+</div>
 </template>
 
 <script>

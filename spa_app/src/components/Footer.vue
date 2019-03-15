@@ -1,11 +1,16 @@
 <template>
-  <footer class="footer">
-    <div class="content has-text-centered">
-        By <a target="_blank" href="https://github.com/thxa">
-          <strong>Thamer ALharbi</strong>
+  <div class="">
+  <div class="hero-foot">
+  <nav class="tabs">
+    <div class="container">
+         <a target="_blank" href="https://github.com/thxa">
+           <strong> By Thamer ALharbi</strong>
         </a>
     </div>
-  </footer>
+  </nav>
+</div>
+</div>
+
 </template>
 
 <script>

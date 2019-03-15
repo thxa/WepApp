@@ -1,28 +1,31 @@
 <template>
   <div class="container main section">
-    <div class="title is-centerd">
-      name: {{season.name}}
+    <div class="title has-text-centered">
+    {{season.name}}
     </div>
-    <div class="">
+    <div class="img">
       <img :src="season.photo_url">
     </div>
     <div class="">
             created: {{season.created}}<br>
-            slug: {{season.slug}} <br>
-            category: {{season.category}} <br>
-      <div class="columns">
-        <div class="column" v-for="category in season.category"
+            category:
+        <div class="" v-for="category in season.category"
         v-bind:key="category.id">
         {{category}}
         </div>
+      <div class="">
+        <div class="title has-text-centered">
+          episodes
+          <hr>
+        </div>
+        <div class="columns is-one-quarters">
+          <router-link class="column" v-for="episod in season.episodes"
+          :to="{ name: 'Video', params: {slug: episod} }"
+          v-bind:key="episod">
+          {{episod}}
+        </router-link>
       </div>
-      episodes: {{season.episodes}}
-      <div class="columns">
-        <router-link class="column" v-for="episod in season.episodes"
-        :to="{ name: 'Video', params: {slug: episod} }"
-        v-bind:key="episod">
-        {{episod}}
-      </router-link>
+
       </div>
     </div>
   </div>

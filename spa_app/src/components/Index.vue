@@ -1,27 +1,25 @@
 <template>
-  <main class="main">
-    <div class="container">
-      <div class="columns is-desktop is-mobile">
-        <router-link
-        :to="{ name: 'Season', params: { slug: season.slug} }" class="column  is-one-quarters" v-for="season in seasones"
-        v-bind:key="season.id">
-          <season :link="season.link">
-            <h3 slot="name">{{season.name}}</h3>
-            <img slot="photo_url" :src="season.photo_url">
-          </season>
-          </router-link>
-        </div>
-      </div>
-  </main>
+  <div class="columns is-desktop">
+    <router-link
+    :to="{ name: 'Season', params: { slug: season.slug} }"
+    class="column  is-one-quarters"
+    v-for="season in seasones"
+    v-bind:key="season.id">
+      <box :link="season.link">
+        <h3 slot="name">{{season.name}}</h3>
+        <img slot="photo_url" :src="season.photo_url">
+      </box>
+    </router-link>
+  </div>
 </template>
 
 <script>
-import Season from '@/components/Season.vue'
+import Box from '@/components/Box.vue'
 import api from '@/api/index.js'
 export default {
   name: 'Index',
   components: {
-    'season': Season
+    'box': Box
   },
   data () {
     return {

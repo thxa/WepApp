@@ -26,6 +26,14 @@ const api = {
           resolve(response.data)
         })
     })
+  },
+  getVideos () {
+    return new Promise((resolve) => {
+      axios.get(`/api/v1/videos/`)
+        .then(response => {
+          resolve(response.data)
+        })
+    })
   }
 }
 

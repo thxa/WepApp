@@ -7,7 +7,7 @@ import NotFound from '@/components/NotFound'
 import SeasonDeteiles from '@/components/SeasonDeteiles'
 import Create from '@/components/Create'
 import Video from '@/components/Video'
-// import Videos from '@/components/Videos'
+import Videos from '@/components/Videos'
 // const Index = () => System.import('@/components/Index.vue')
 // const About = () => System.import('@/components/About.vue')
 // const NotFound = () => System.import('@/components/NotFound.vue')
@@ -54,11 +54,11 @@ export default new Router({
       path: '/video/:slug/',
       name: 'Video',
       component: Video
+    },
+    {
+      path: '/videos/',
+      name: 'Videos',
+      component: Videos
     }
-    // {
-    //   path: '/list/',
-    //   name: 'Videos',
-    //
-    // }
   ]
 })

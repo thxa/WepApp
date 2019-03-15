@@ -2,6 +2,9 @@ from main.models import Video, Category, Season
 from rest_framework import serializers
 
 class VideoSerializer(serializers.ModelSerializer):
+    # season = serializers.StringRelatedField()
+    season = serializers.SlugRelatedField(read_only=True, slug_field='slug')
+
     class Meta:
         model = Video
         fields = ('id', 'name', 'photo_url', 'url', 'season', 'created', 'slug')

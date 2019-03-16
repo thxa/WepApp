@@ -18,11 +18,18 @@
           episodes
           <hr>
         </div>
-        <div class="columns is-one-quarters">
+        <div class="columns is-one-third">
           <router-link class="column" v-for="episod in season.episodes"
-          :to="{ name: 'Video', params: {slug: episod} }"
+          :to="{ name: 'Video', params: {slug: episod.slug} }"
           v-bind:key="episod">
-          {{episod}}
+          <div class="card">
+            <div class="">
+              {{episod.name}}
+            </div>
+            <div class="">
+              <img :src="episod.photo_url" alt="">
+            </div>
+          </div>
         </router-link>
       </div>
 

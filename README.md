@@ -44,8 +44,7 @@
 - https://www.w3schools.com/js/
 
 
-## BackEnd JS -> Node, Webpack, Eslint, Bable, Expressjs, Axios -> SPA = Single Page Application
-- https://app.pluralsight.com/library/courses/vue-js-single-page-applications/table-of-contents
+## BackEnd JS -> Node, Webpack, Eslint, Bable, Expressjs, Axios
 - https://nodejs.org/api/index.html
 - https://expressjs.com/en/starter/installing.html
 - https://webpack.js.org/concepts/
@@ -59,5 +58,6 @@
 - https://bulma.io/
 
 
-## JS Framework -> Vue
+## JS Framework -> Vue -> SPA = Single Page Application
 - https://vuejs.org/
+- https://app.pluralsight.com/library/courses/vue-js-single-page-applications/table-of-contents

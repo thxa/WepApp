@@ -35,12 +35,13 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = ('id', 'name', 'slug', 'seasones')
 
-
+# https://www.django-rest-framework.org/api-guide/relations/
 class SeasonSerializer(serializers.ModelSerializer):
     # category = serializers.StringRelatedField(many=True)
     # episodes = serializers.StringRelatedField(many=True)
     category = serializers.SlugRelatedField(many=True, read_only=True, slug_field='slug')
-    episodes = serializers.SlugRelatedField(many=True, read_only=True, slug_field='slug')
+    # episodes = serializers.SlugRelatedField(many=True, read_only=True, slug_field='slug')
+    episodes = VideoSerializer(many=True, read_only=True)
 
     class Meta:
         model = Season

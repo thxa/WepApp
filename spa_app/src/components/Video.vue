@@ -8,20 +8,18 @@
     </div>
     <div class="">
       <nav class="pagination" role="navigation" aria-label="pagination">
-        <a class="pagination-previous" title="This is the first page" disabled>Previous</a>
-        <a class="pagination-next">Next page</a>
-    <ul class="pagination-list">
-      <li>
-        <a class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</a>
-      </li>
-      <li>
-        <a class="pagination-link" aria-label="Goto page 2">2</a>
-      </li>
-      <li>
-        <a class="pagination-link" aria-label="Goto page 3">3</a>
-      </li>
-    </ul>
-</nav>
+        <router-link to="#" class="pagination-previous" title="This is the first page" disabled>Previous</router-link>
+        <router-link to="#" class="pagination-next">Next</router-link>
+
+        <ul class="pagination-list">
+          <li>
+            <router-link to="#" class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</router-link>
+          </li>
+          <li>
+            <router-link to="#" class="pagination-link" aria-label="Page 2" aria-current="page">2</router-link>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
 </template>

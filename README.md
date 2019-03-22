@@ -1,24 +1,24 @@
 #  Video Project
 
 
-# How do we Running project?
+## How do we Running project?
 `
 > sudo docker-compose up --build
 `
 
-# How do we Make Database?
+## How do we Make Database?
 `
 > sudo docker-compose run web python3 api/manage.py makemigrations
 > sudo docker-compose run web python3 api/manage.py migrate
 `
 
-# How do we Remove project?
+## How do we Remove project?
 `
 > sudo docker-compose down
 `
 
-# Sources
 
+# Sources
 ## Back End -> Python
 - https://docs.python.org/3/
 
@@ -26,7 +26,7 @@
 ## container -> Docker
 - https://www.docker.com/
 - https://docs.docker.com/compose/django/
-
+- https://docs.docker.com/compose/compose-file/
 
 ## Front End -> HTML CSS JS
 - https://www.w3schools.com/html/
@@ -51,9 +51,7 @@
 
 ## Deploy Python Project -> gunicorn
 - https://gunicorn.org/
-- http://docs.gunicorn.org/en/stable/index.html
-- http://docs.gunicorn.org/en/stable/run.html
-
+- https://testdriven.io/blog/dockerizing-django-with-postgres-gunicorn-and-nginx/
 
 ## CSS Framework -> bulma
 - https://bulma.io/
@@ -67,9 +65,9 @@
 
 
 
-## tools
+# tools
 
-## System -> Gnu Linux -> distribution -> Arch Linux
+### System -> Gnu Linux -> distribution -> Arch Linux
 - https://www.archlinux.org/
 
 ### Editor -> Atom

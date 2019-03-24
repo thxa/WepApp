@@ -9,7 +9,6 @@
           <h3 slot="name">{{video.name}}</h3>
           <img slot="photo_url" :src="video.photo_url">
         </box>
-        {{ video.name}}
       </router-link>
     </div>
   </div>

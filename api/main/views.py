@@ -192,17 +192,17 @@ class SeasonDetileAPIView(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class IndexView(View):
-    template_name = 'index.html'
-
-    def get(self, request):
-        return render(request, self.template_name, context=None)
-
-class VideoCreate(View):
-    template_name = 'main/create_video.html'
-
-    def get(self, request):
-        return render(request, self.template_name, context=None)
+# class IndexView(View):
+#     template_name = 'index.html'
+#
+#     def get(self, request):
+#         return render(request, self.template_name, context=None)
+#
+# class VideoCreate(View):
+#     template_name = 'main/create_video.html'
+#
+#     def get(self, request):
+#         return render(request, self.template_name, context=None)
 
 # @api_view(['GET', 'PUT', 'PATCH','DELETE'])
 # def video_detile(request, slug):

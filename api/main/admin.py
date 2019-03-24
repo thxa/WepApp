@@ -12,9 +12,9 @@ class SeasonAdmin(admin.ModelAdmin):
 
      # fields = ()#'id', 'name', 'slug', 'created', 'episodes')
      search_fields = ('name', 'slug')
-     list_display = ('name', 'slug', 'created')
+     list_display = ('name', 'slug', 'created', 'category')
      list_display_links = ()
-     list_filter = ('name', 'slug', 'created')
+     list_filter = ('name', 'slug', 'created', 'category')
 
 
 class VideoAdmin(admin.ModelAdmin):

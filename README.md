@@ -58,11 +58,15 @@
 - https://gunicorn.org/
 - https://testdriven.io/blog/dockerizing-django-with-postgres-gunicorn-and-nginx/
 
-## Deploy Node
+## Deploy Vue js
 - https://vuejs.org/v2/cookbook/dockerize-vuejs-app.html
 
-# tools
+## Nginx
+- https://www.nginx.com/
+- https://www.nginx.com/resources/wiki/start/topics/examples/full/
 
+
+# tools
 ### System -> Gnu Linux -> distribution -> Arch Linux
 - https://www.archlinux.org/
 

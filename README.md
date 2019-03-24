@@ -2,17 +2,10 @@
 
 
 ## How do we Running project?
-`
-> sudo docker-compose up --build
-`
+`sudo docker-compose up --build` or `sudo docker-compose up -d --build`
 
-## How do we Make Database?
-`> sudo docker-compose up -d --build`
 ## How do we Remove project?
-`
-> sudo docker-compose down
-`
-
+`> sudo docker-compose down`
 
 # Sources
 

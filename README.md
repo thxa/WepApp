@@ -1,76 +1,83 @@
-#  Video Project
+
+#### How do we Running project?
+    sudo docker-compose up --build
+#####OR
+    sudo docker-compose up -d --build`
+
+#### How do we Remove project?
+    sudo docker-compose down
+
+#### How do we create super user?
+    sudo docker-compose run web python manage.py createsuperuser
 
 
-## How do we Running project?
-`sudo docker-compose up --build` or `sudo docker-compose up -d --build`
 
-## How do we Remove project?
-`> sudo docker-compose down`
+## Sources
+#### Back End:
+- <a href="https://docs.python.org/3/">Python</a>
 
-# Sources
+#### Python Framework: 
+- <a href="https://docs.djangoproject.com/en/2.1/">Django</a> 
+- <a href="https://www.django-rest-framework.org/">DjangoRestFramework</a>
 
-## Back End -> Python
-- https://docs.python.org/3/
+#### CORS in Django REST Framework
+- <a href="https://www.techiediaries.com/django-cors/">Django cors</a>
 
-## Python Framework -> Django, DjangoRestFramework
-- https://docs.djangoproject.com/en/2.1/
-- https://www.django-rest-framework.org/
+#### BackEnd JS: Axios
+- <a href="https://nodejs.org/api/index.html">Node</a>
+- <a href="https://expressjs.com/en/starter/installing.html">Expressjs</a>
+- <a href="https://webpack.js.org/concepts/">Webpack</a>
+- <a href="https://eslint.org/docs/developer-guide/working-with-rules">Eslint</a>
+- <a href="https://babeljs.io/docs/en/">Bable</a>
 
-## CORS in Django REST Framework
-- https://www.techiediaries.com/django-cors/
+#### Front End:
+- <a href="https://www.w3schools.com/html/">HTML</a>
+- <a href="https://www.w3schools.com/css/">CSS</a>
+- <a href="https://www.w3schools.com/js/">JS</a>
 
-## BackEnd JS -> Node, Webpack, Eslint, Bable, Expressjs, Axios
-- https://nodejs.org/api/index.html
-- https://expressjs.com/en/starter/installing.html
-- https://webpack.js.org/concepts/
-- https://eslint.org/docs/developer-guide/working-with-rules
-- https://babeljs.io/docs/en/
+##### CSS Framework:
+- <a href="https://bulma.io/">bulma</a>
+
+##### JS Framework -> SPA = Single Page Application
+- <a href="https://vuejs.org/">Vue</a>
+- <a href="https://app.pluralsight.com/library/courses/vue-js-single-page-applications/table-of-contents">Vue Js Single Page Applications</a>
+- <a href="https://vue-loader.vuejs.org/guide/#vue-cli">vue-cli</a> 
+
+### Dev Ops:
+
+##### container:
+- <a href="https://www.docker.com/">docker</a>
+- <a href="https://docs.docker.com/compose/django">docker compose for django</a>
+- <a href="https://docs.docker.com/compose/compose-file/">docker-compose file</a>
+
+##### Deploy Python Project: 
+- <a href="https://gunicorn.org/">gunicorn</a>
+- <a href="https://testdriven.io/blog/dockerizing-django-with-postgres-gunicorn-and-nginx">deploy by docker</a>
+
+##### Deploy Vue js:
+- <a href="https://vuejs.org/v2/cookbook/dockerize-vuejs-app.html">deploy vue by docker</a>
+
+##### Web Servers and Reverse Proxy: 
+- <a href="https://www.nginx.com/">Nginx</a>
+- <a href="https://www.nginx.com/resources/wiki/start/topics/examples/full/">examples Nignx</a>
+
+<hr/>
+
+### tools
+##### System -> Gnu Linux -> distribution:
+- <a href="https://www.archlinux.org/">ArchLinux</a>
+
+##### Editor:
+- <a href="https://atom.io/">Atom</a>
+
+##### IDE:
+- <a href="https://www.jetbrains.com/pycharm/">Pycharm</a>
+
+##### Browser:
+- <a href="https://www.mozilla.org/">Firefox</a>
 
 
-## Front End -> HTML CSS JS
-- https://www.w3schools.com/html/
-- https://www.w3schools.com/css/
-- https://www.w3schools.com/js/
+##### <a href="https://git-scm.com/">Git<a>
 
-## CSS Framework -> bulma
-- https://bulma.io/
-
-## JS Framework -> Vue -> SPA = Single Page Application
-- https://vuejs.org/
-- https://vuejs.org/v2/guide/
-- https://vue-loader.vuejs.org/guide/#vue-cli
-- https://app.pluralsight.com/library/courses/vue-js-single-page-applications/table-of-contents
-
-## Dev Ops
-## container -> Docker
-- https://www.docker.com/
-- https://docs.docker.com/compose/django/
-- https://docs.docker.com/compose/compose-file/
-
-## Deploy Python Project -> gunicorn
-- https://gunicorn.org/
-- https://testdriven.io/blog/dockerizing-django-with-postgres-gunicorn-and-nginx/
-
-## Deploy Vue js
-- https://vuejs.org/v2/cookbook/dockerize-vuejs-app.html
-
-## Nginx
-- https://www.nginx.com/
-- https://www.nginx.com/resources/wiki/start/topics/examples/full/
-
-
-# tools
-### System -> Gnu Linux -> distribution -> Arch Linux
-- https://www.archlinux.org/
-
-### Editor -> Atom
-- https://atom.io/
-
-### Browser -> Firefox
-- https://www.mozilla.org/
-
-### Git
-- https://git-scm.com/
-
-### get api -> Post man
-- https://www.getpostman.com/
+##### Get API:
+- <a href="https://www.getpostman.com/">Post man</a>

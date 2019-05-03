@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <div class="columns is-desktop">
-      <router-link class="column  is-one-quarters"
+      <router-link class="column  is-one-quarter"
       v-for="video in videos"
       :to="{ name: 'Video', params: { slug: video.slug} }"
       v-bind:key="video.id">

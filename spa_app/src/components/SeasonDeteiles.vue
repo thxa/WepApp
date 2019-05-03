@@ -18,10 +18,10 @@
           episodes
           <hr>
         </div>
-        <div class="columns is-one-third">
-          <router-link class="column" v-for="episod in season.episodes"
+        <div class="columns">
+          <router-link class="column is-one-quarter" v-for="episod in season.episodes"
           :to="{ name: 'Video', params: {slug: episod.slug} }"
-          v-bind:key="episod">
+          v-bind:key="episod.created">
           <div class="card">
             <div class="">
               {{episod.name}}

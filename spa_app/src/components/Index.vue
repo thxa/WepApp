@@ -2,7 +2,7 @@
   <div class="columns is-desktop">
     <router-link
     :to="{ name: 'Season', params: { slug: season.slug} }"
-    class="column  is-one-quarters"
+    class="column is-one-quarter"
     v-for="season in seasones"
     v-bind:key="season.id">
       <box :link="season.link">

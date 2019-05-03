@@ -1,7 +1,9 @@
 
 #### How do we Running project?
     sudo docker-compose up --build
+
 #####OR
+
     sudo docker-compose up -d --build`
 
 #### How do we Remove project?
@@ -23,12 +25,13 @@
 #### CORS in Django REST Framework
 - <a href="https://www.techiediaries.com/django-cors/">Django cors</a>
 
-#### BackEnd JS: Axios
+#### BackEnd JS:
 - <a href="https://nodejs.org/api/index.html">Node</a>
 - <a href="https://expressjs.com/en/starter/installing.html">Expressjs</a>
 - <a href="https://webpack.js.org/concepts/">Webpack</a>
 - <a href="https://eslint.org/docs/developer-guide/working-with-rules">Eslint</a>
 - <a href="https://babeljs.io/docs/en/">Bable</a>
+- <a href="https://github.com/axios/axios">Axios</a>
 
 #### Front End:
 - <a href="https://www.w3schools.com/html/">HTML</a>
@@ -40,7 +43,8 @@
 
 ##### JS Framework -> SPA = Single Page Application
 - <a href="https://vuejs.org/">Vue</a>
-- <a href="https://app.pluralsight.com/library/courses/vue-js-single-page-applications/table-of-contents">Vue Js Single Page Applications</a>
+- <a href="https://app.pluralsight.com/library/courses/vuejs-fundamentals/table-of-contents">Course: Vue Js Fundamentals</a>
+- <a href="https://app.pluralsight.com/library/courses/vue-js-single-page-applications/table-of-contents">Course: Vue Js Single Page Applications</a>
 - <a href="https://vue-loader.vuejs.org/guide/#vue-cli">vue-cli</a> 
 
 ### Dev Ops:

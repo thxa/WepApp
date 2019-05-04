@@ -9,7 +9,7 @@ const api = {
         .then(response => {
           resolve(response.data)
         })
-        .cache(error => {
+        .catch(error => {
           reject(error.data)
         })
     })
@@ -20,7 +20,7 @@ const api = {
         .then(response => {
           resolve(response.data)
         })
-        .cache(error => {
+        .catch(error => {
           reject(error.data)
         })
     })
@@ -75,7 +75,7 @@ const api = {
         .then(response => {
           resolve(response.data)
         })
-        .then(error => {
+        .catch(error => {
           reject(error.data)
         })
     })
@@ -86,7 +86,7 @@ const api = {
         .then(response => {
           resolve(response.data)
         })
-        .cache(error => {
+        .catch(error => {
           reject(error.data)
         })
     })
@@ -97,7 +97,7 @@ const api = {
         .then(response => {
           resolve(response.data)
         })
-        .cache(error => {
+        .catch(error => {
           reject(error.data)
         })
     })
@@ -108,7 +108,7 @@ const api = {
         .then(response => {
           resolve(response.data)
         })
-        .cache(error => {
+        .catch(error => {
           reject(error.data)
         })
     })
@@ -119,17 +119,21 @@ const api = {
         .then(response => {
           resolve(response.data)
         })
-        .cache(error => {
+        .catch(error => {
           reject(error.data)
         })
     })
   },
   getVideos () {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       axios.get(`/api/v1/videos/`)
         .then(response => {
           resolve(response.data)
         })
+        .catch(response => {
+          reject(response.data)
+        })
+
     })
   }
 }

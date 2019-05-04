@@ -2,8 +2,8 @@ from django.shortcuts import render
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView, Response
-from main.models import Video, Category, Season
-from main import serializers
+from .models import Video, Category, Season
+from . import serializers
 from django.shortcuts import get_object_or_404
 from django.views import View
 # Create your views here.
@@ -66,7 +66,7 @@ class VideoDetileAPIView(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def patch(self, request, pk, format=None):
+    def patch(self, request, slug, format=None):
         video = get_object_or_404(Video, slug=slug)
         serializer = serializers.VideoSerializer(video, data=request.data)
 
@@ -163,7 +163,7 @@ class SeasonDetileAPIView(APIView):
         season = get_object_or_404(Season, slug=slug)
         serializer = serializers.SeasonSerializer(season)
         # season.get_next_in_order()
-        # serializer.data += {"next": season.video.get_next_in_order()}
+        # serializer.data["next"] = season.video.get_next_in_order()
         return Response(serializer.data)
 
     # def post(self, request, format=None):pass
@@ -188,16 +188,16 @@ class SeasonDetileAPIView(APIView):
 
     def delete(self, request, slug, format=None):
         season = get_object_or_404(Season, slug=slug)
-        category.delete()
+        season.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-
+#
 # class IndexView(View):
 #     template_name = 'index.html'
 #
 #     def get(self, request):
 #         return render(request, self.template_name, context=None)
-#
+
 # class VideoCreate(View):
 #     template_name = 'main/create_video.html'
 #

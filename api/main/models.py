@@ -26,6 +26,7 @@ class Category(models.Model):
 
 class Season(models.Model):
     name = models.CharField(max_length=70, blank=True, unique=True)
+    number_of_episodes = models.PositiveSmallIntegerField(default=1, blank=True)
     photo_url = models.URLField(blank=True)
     slug = models.SlugField(blank=True, unique=True)
     created = models.DateTimeField(auto_now_add=True)

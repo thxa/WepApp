@@ -15,6 +15,18 @@
             </span>
           </div>
           <div id="navbarMenuHeroA" class="navbar-menu">
+            <div class="navbar-start">
+              <div class="navbar-item field has-addons">
+                <div class="control">
+                  <input class="input is-rounded" type="text" placeholder="Find a Season">
+                </div>
+                <div class="control">
+                  <a class="button is-info">
+                    <i class="fas fa-search"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
             <div class="navbar-end">
               <router-link class="navbar-item is-tab" to="/" exact>Home</router-link>
               <router-link class="navbar-item is-tab" to="/about/">about</router-link>
@@ -22,6 +34,7 @@
               <router-link class="navbar-item is-tab" :to="{ name: 'category', params: { slug: 'movie' } }">movie</router-link>
               <router-link class="navbar-item is-tab" to="/videos/">videos</router-link>
               <router-link class="navbar-item is-tab" to="/season/create/">Create</router-link>
+              <router-link class="navbar-item is-tab" to="/signin/">sign in</router-link>
             </div>
           </div>
         </div>

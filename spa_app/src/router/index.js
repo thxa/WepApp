@@ -8,6 +8,8 @@ import SeasonDeteiles from '@/components/SeasonDeteiles'
 import Create from '@/components/Create'
 import Video from '@/components/Video'
 import Videos from '@/components/Videos'
+import Signin from '@/components/Signin'
+
 // const Index = () => System.import('@/components/Index.vue')
 // const About = () => System.import('@/components/About.vue')
 // const NotFound = () => System.import('@/components/NotFound.vue')
@@ -28,6 +30,11 @@ export default new Router({
       path: '/about/',
       name: 'About',
       component: About
+    },
+    {
+      path: '/signin/',
+      name: 'Signin',
+      component: Signin
     },
     {
       path: '*',

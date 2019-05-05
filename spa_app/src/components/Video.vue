@@ -8,12 +8,12 @@
     </div>
     <div class="">
       <nav class="pagination" role="navigation" aria-label="pagination">
-        <router-link to="#" class="pagination-previous" title="This is the first page" disabled>Previous</router-link>
-        <router-link to="#" class="pagination-next">Next</router-link>
+        <button v-on:click="previousVideo()" class="pagination-previous" title="This is the first page" disabled>Previous</button>
+        <button v-on:click="nextVideo()" class="pagination-next">Next</button>
 
         <ul class="pagination-list">
           <li>
-            <router-link to="#" class="pagination-link is-current" aria-label="Page 1" aria-current="page">1</router-link>
+            <router-link to="#" class="pagination-link is-current" aria-label="1" aria-current="page">1</router-link>
           </li>
           <li>
             <router-link to="#" class="pagination-link" aria-label="Page 2" aria-current="page">2</router-link>
@@ -40,6 +40,12 @@ export default {
           console.log(data)
           this.video = data
         })
+    },
+    nextVideo () {
+      console.log('next Video')
+    },
+    previousVideo () {
+      console.log('previous Video')
     }
   },
   watch: {

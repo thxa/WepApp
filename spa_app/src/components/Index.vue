@@ -61,10 +61,6 @@ export default {
 </script>
 
 <style>
-.main {
-  margin: 5%;
-  /* background-color: black; */
-}
 .columns {
   flex-wrap: wrap;
 }

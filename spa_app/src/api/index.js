@@ -130,10 +130,9 @@ const api = {
         .then(response => {
           resolve(response.data)
         })
-        .catch(response => {
-          reject(response.data)
+        .catch(error => {
+          reject(error.data)
         })
-
     })
   }
 }

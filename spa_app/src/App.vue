@@ -1,15 +1,13 @@
 <template>
-  <div>
-    <section class="hero is-primary is-medium">
+    <section class="hero is-danger is-medium">
       <Header></Header>
-    <div class="hero-body">
-      <div class="container has-text-centered">
-        <router-view/>
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <router-view/>
+      </div>
     </div>
-  </div>
       <Footer></Footer>
     </section>
-  </div>
 </template>
 
 <script>

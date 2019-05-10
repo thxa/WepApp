@@ -33,7 +33,6 @@
         </p>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -44,7 +43,7 @@ export default {
     return {
       username: '',
       password: '',
-      isAuthentcated: true
+      isAuthentcated: false
     }
   },
   methods: {

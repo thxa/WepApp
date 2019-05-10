@@ -4,16 +4,15 @@
 
 #####OR
 
-    sudo docker-compose up -d --build`
+    sudo docker-compose up -d --build
 
 #### How do we Remove project?
     sudo docker-compose down
 
 #### How do we create super user?
-    sudo docker-compose run web python manage.py createsuperuser
-
-
-
+    sudo docker-compose run web python3 manage.py createsuperuser
+ <hr>
+     
 ## Sources
 #### Back End:
 - <a href="https://docs.python.org/3/">Python</a>

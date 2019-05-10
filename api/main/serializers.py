@@ -12,25 +12,6 @@ class VideoSerializer(serializers.ModelSerializer):
         extra_kwargs = {'client': {'required': False}}
         validators = []
 
-    # def create(self, validated_data):
-    #     """
-    #     Create and return a new `Video` instance, given the validated data.
-    #     """
-    #     return Video.objects.create(**validated_data)
-    #
-    # def update(self, instance, validated_data):
-    #     """
-    #     Update and return an existing `Video` instance, given the validated data.
-    #     """
-    #     instance.name = validated_data.get('name', instance.name)
-    #     instance.photo_url = validated_data.get('photo_url', instance.photo_url)
-    #     instance.url = validated_data.get('url', instance.url)
-    #     instance.category = validated_data.get('category', instance.category)
-    #     instance.season = validated_data.get('season', instance.season)
-    #     instance.slug = validated_data.get('slug', instance.slug)
-    #     instance.save()
-    #     return instance
-
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:

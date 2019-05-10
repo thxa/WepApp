@@ -1,4 +1,5 @@
 <template>
+  <div class="container has-text-centered">
   <div class="columns is-desktop">
     <router-link
     :to="{ name: 'Season', params: { slug: season.slug} }"
@@ -11,6 +12,7 @@
       </box>
     </router-link>
   </div>
+</div>
 </template>
 
 <script>

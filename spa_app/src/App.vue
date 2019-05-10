@@ -2,10 +2,10 @@
     <section class="hero is-danger is-medium">
       <Header></Header>
       <div class="hero-body">
-        <div class="container has-text-centered">
+        <div class="container">
           <router-view/>
+        </div>
       </div>
-    </div>
       <Footer></Footer>
     </section>
 </template>

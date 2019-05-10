@@ -116,13 +116,13 @@ dmypy.json
 .pyre/
 
 # VScode
-.vscode
+.vscode/
 
 # Node JS
-node_modules
+node_modules/
 
 # vue
-dist
+dist/
 
 # Pycharm
-.idea
+.idea/

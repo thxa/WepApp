@@ -1,8 +1,8 @@
 from django.db import models
 from django.urls import reverse_lazy
 from django.utils.text import slugify
+from django.contrib.auth.models import User
 
-# Create your models here.
 
 class Category(models.Model):
     name = models.CharField(max_length=30, unique=True)
@@ -23,8 +23,8 @@ class Category(models.Model):
         ordering = ['name']
 
 
-
 class Season(models.Model):
+    owner = models.ForeignKey(User, related_name='seasones', on_delete=models.CASCADE)
     name = models.CharField(max_length=70, blank=True, unique=True)
     number_of_episodes = models.PositiveSmallIntegerField(default=1, blank=True)
     photo_url = models.URLField(blank=True)
@@ -47,15 +47,15 @@ class Season(models.Model):
         ordering = ['created']
 
 
-
 class Video(models.Model):
+    owner = models.ForeignKey(User, related_name='videos', on_delete=models.CASCADE)
     name = models.CharField(max_length=50, unique=True, blank=True)
     photo_url = models.URLField(blank=True)
     url = models.URLField(blank=True)
     created = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(blank=True, unique=True)
     # category = models.ManyToManyField(Category, related_name="videos", blank=False)
-    season = models.ForeignKey(Season, on_delete=models.SET_NULL, related_name="episodes", blank=True, null=True)
+    season = models.ForeignKey(Season, on_delete=models.CASCADE, related_name="episodes")
 
     # next = connect with next video
     # prev = connect with prev video
@@ -70,7 +70,6 @@ class Video(models.Model):
 
     def get_absolute_url(self):
         return reverse_lazy('videos', args=[self.slug])
-
 
     class Meta:
         ordering = ['created']

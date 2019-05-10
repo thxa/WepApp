@@ -1,6 +1,7 @@
 from .models import Video, Category, Season
 from rest_framework import serializers
 
+
 class VideoSerializer(serializers.ModelSerializer):
     # season = serializers.StringRelatedField()
     season = serializers.SlugRelatedField(read_only=True, slug_field='slug')
@@ -8,7 +9,8 @@ class VideoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Video
         fields = ('id', 'name', 'photo_url', 'url', 'season', 'created', 'slug')
-
+        extra_kwargs = {'client': {'required': False}}
+        validators = []
 
     # def create(self, validated_data):
     #     """
@@ -35,6 +37,7 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = ('id', 'name', 'slug', 'seasones')
 
+
 # https://www.django-rest-framework.org/api-guide/relations/
 class SeasonSerializer(serializers.ModelSerializer):
     # category = serializers.StringRelatedField(many=True)
@@ -45,4 +48,5 @@ class SeasonSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Season
-        fields = ('id', 'name', 'slug', 'photo_url', 'number_of_episodes', 'created', 'category', 'episodes')
+        fields = ('id', 'name', 'slug', 'photo_url',
+                  'number_of_episodes', 'created', 'category', 'episodes')

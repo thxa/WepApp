@@ -17,17 +17,14 @@
 
 <script>
 import Box from '@/components/Box.vue'
-import api from '@/api/index.js'
+import { mapGetters } from 'vuex'
 export default {
   name: 'Index',
   components: {
     'box': Box
   },
-  data () {
-    return {
-      slug: this.$route.params.slug,
-      seasones: []
-    }
+  computed: {
+    ...mapGetters('seasonesModule', ['seasones'])
   },
   methods: {
     loadSeasones () {
@@ -42,18 +39,14 @@ export default {
       // } else {
       //   this.seasones = this.season
       // }
-      api.getSeasones()
-        .then(data => {
-          console.log(data)
-          this.seasones = data
-        })
+      this.$store.dispatch('seasonesModule/updateSeasones')
     }
   },
   watch: {
     '$route' (to, from) {
-      this.slug = to.params.slug
+      // this.slug = to.params.slug
       this.loadSeasones()
-      console.log(this.$route.query.page)
+      // console.log(this.$route.query.page)
     }
   },
   created () {

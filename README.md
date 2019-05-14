@@ -42,6 +42,7 @@
 
 ##### JS Framework -> SPA = Single Page Application
 - <a href="https://vuejs.org/">Vue</a>
+- <a href="https://vuex.vuejs.org/">Vuex</a>
 - <a href="https://app.pluralsight.com/library/courses/vuejs-fundamentals/table-of-contents">Course: Vue Js Fundamentals</a>
 - <a href="https://app.pluralsight.com/library/courses/vue-js-single-page-applications/table-of-contents">Course: Vue Js Single Page Applications</a>
 - <a href="https://vue-loader.vuejs.org/guide/#vue-cli">vue-cli</a> 

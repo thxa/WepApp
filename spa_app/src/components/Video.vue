@@ -25,21 +25,15 @@
 </template>
 
 <script>
-import api from '@/api/index.js'
+import { mapGetters } from 'vuex'
 export default {
-  data () {
-    return {
-      slug: this.$route.params.slug,
-      video: {}
-    }
+  computed: {
+    ...mapGetters('videoModule', ['video'])
   },
   methods: {
     loadVideo () {
-      api.getVideo(this.slug)
-        .then(data => {
-          console.log(data)
-          this.video = data
-        })
+      this.slug = this.$route.params.slug
+      this.$store.dispatch('videoModule/loadVideo', this.slug)
     },
     nextVideo () {
       console.log('next Video')
@@ -50,9 +44,9 @@ export default {
   },
   watch: {
     '$route' (to, from) {
-      this.slug = to.params.slug
+      // this.slug = to.params.slug
       this.loadVideo()
-      console.log(this.$route.query.page)
+      // console.log(this.$route.query.page)
     }
   },
   created () {

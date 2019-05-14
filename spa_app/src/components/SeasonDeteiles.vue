@@ -3,7 +3,7 @@
     <div class="title has-text-centered">
     {{season.name}}
     </div>
-    <div class="">
+    <div v-if="isAuthentcated" class="">
       <div class="button">
         <i class="far fa-edit"></i>
       </div>
@@ -37,9 +37,9 @@
               <img :src="episode.photo_url" alt="">
             </router-link>
             <button class="button">
-              <i class="far fa-edit"></i>
+              <i v-if="isAuthentcated" class="far fa-edit"></i>
             </button>
-            <button v-on:click="deleteVideo(episode.slug)" class="button">
+            <button v-if="isAuthentcated" v-on:click="deleteVideo(episode.slug)" class="button">
               <i class="fas fa-trash"></i>
             </button>
           </div>
@@ -52,66 +52,36 @@
 </template>
 
 <script>
-import api from '@/api/index.js'
+import { mapGetters } from 'vuex'
 export default {
-  data () {
-    return {
-      slug: this.$route.params.slug,
-      season: {}
-    }
+  computed: {
+    ...mapGetters(['isAuthentcated']),
+    ...mapGetters('seasonModule', ['season']),
+    ...mapGetters('videoModule', ['video'])
   },
   methods: {
     loadSeason () {
-      api.getSeason(this.slug)
-        .then(data => {
-          console.log(data)
-          this.season = data
-        })
+      this.slug = this.$route.params.slug
+      this.$store.dispatch('seasonModule/loadSeason', this.slug)
     },
     updateSeason () {
-      api.putSeason(this.slug, this.season)
-        .then(data => {
-          this.season = data
-          console.log(data)
-        })
-        .catch(error => {
-          console.log(error)
-        })
+      this.$store.dispatch('seasonModule/updateSeason', this.slug, this.season)
     },
     deleteSeason () {
-      api.deleteSeason(this.slug)
-        .then(data => {
-          console.log(data)
-        })
-        .catch(error => {
-          console.log(error)
-        })
+      this.$store.dispatch('seasonModule/deleteSeason', this.slug)
     },
     updateVideo (slug, video) {
-      api.putVideo(slug, video)
-        .then(data => {
-          video = data
-          console.log(data)
-        })
-        .catch(error => {
-          console.log(error)
-        })
+      this.$store.dispatch('videoModule/upadteVideo', slug)
     },
     deleteVideo (slug) {
-      api.deleteVideo(slug)
-        .then(data => {
-          console.log(data)
-        })
-        .catch(error => {
-          console.log(error)
-        })
+      this.$store.dispatch('videoModule/deleteVideo', slug)
     }
   },
   watch: {
     '$route' (to, from) {
-      this.slug = to.params.slug
+      // this.slug = to.params.slug
       this.loadSeason()
-      console.log(this.$route.query.page)
+      // console.log(this.$route.query.page)
     }
   },
   created () {

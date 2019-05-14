@@ -16,43 +16,25 @@
 
 <script>
 import Box from '@/components/Box.vue'
-import api from '@/api/index.js'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Videos',
   components: {
     'box': Box
   },
-  data () {
-    return {
-      // slug: this.$route.params.slug,
-      videos: []
-    }
+  computed: {
+    ...mapGetters('videosModule', ['videos'])
   },
   methods: {
     loadVideos () {
-      // if (this.slug === 'movie') {
-      //   this.seasones = this.movie
-      // } else {
-      //   this.seasones = this.anime
-      // }
-
-      // if (this.slug === 'season') {
-      //   this.seasones = this.videos
-      // } else {
-      //   this.seasones = this.season
-      // }
-      api.getVideos()
-        .then(data => {
-          console.log(data)
-          this.videos = data
-        })
+      this.$store.dispatch('videosModule/loadVideos')
     }
   },
   watch: {
     '$route' (to, from) {
       // this.slug = to.params.slug
-      // this.loadSeasones()
+      this.loadVideos()
       // console.log(this.$route.query.page)
     }
   },

@@ -30,11 +30,16 @@
             <div class="navbar-end">
               <router-link class="navbar-item is-tab" to="/" exact>Home</router-link>
               <router-link class="navbar-item is-tab" to="/about/">about</router-link>
-              <router-link class="navbar-item is-tab" :to="{ name: 'category', params: { slug: 'anime' } }">anime</router-link>
-              <router-link class="navbar-item is-tab" :to="{ name: 'category', params: { slug: 'movie' } }">movie</router-link>
+              <!-- <router-link class="navbar-item is-tab" :to="{ name: 'category', params: { slug: 'anime' } }">anime</router-link>
+              <router-link class="navbar-item is-tab" :to="{ name: 'category', params: { slug: 'movie' } }">movie</router-link> -->
               <router-link class="navbar-item is-tab" to="/videos/">videos</router-link>
-              <router-link class="navbar-item is-tab" to="/season/create/">Create</router-link>
-              <router-link class="navbar-item is-tab" to="/signin/">sign in</router-link>
+              <router-link v-if="isAuthentcated"
+                class="navbar-item is-tab"
+                to="/season/create/">Create</router-link>
+
+              <router-link class="navbar-item is-tab" to="/signin/">
+                    <span v-if="isAuthentcated">Profile</span>
+                    <span v-else>sign in</span></router-link>
             </div>
           </div>
         </div>
@@ -44,12 +49,11 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'Header',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+  computed: {
+    ...mapGetters(['isAuthentcated'])
   }
 }
 </script>

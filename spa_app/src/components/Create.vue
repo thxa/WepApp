@@ -2,7 +2,7 @@
   <div class="">
     <div class="">
       <div class="is-size">Season</div>
-        Name <input class="input" type="text" v-model="season.name">
+        Name <input class="input" type="text" v-model="newSeason.name">
         <!-- Category
         <div  class="select is-fullwidth">
           <select class="select" v-model="season.category">
@@ -10,8 +10,8 @@
           </select>
         </div> -->
     Number of episodes
-     <input class="input" type="number" v-model="season.number_of_episodes">
-        photo url <input class="input" type="url" v-model="season.photo_url">
+     <input class="input" type="number" v-model="newSeason.number_of_episodes">
+        photo url <input class="input" type="url" v-model="newSeason.photo_url">
       <button class="button" v-on:click="createSeason()">send</button>
       <!-- is-loading -->
     </div>
@@ -38,60 +38,20 @@
 </template>
 
 <script>
-import api from '@/api/index.js'
+import { mapGetters } from 'vuex'
 export default {
   name: 'Create',
-  data () {
-    return {
-      season: {
-        'name': '',
-        'photo_url': '',
-        'number_of_episodes': 1
-        // 'category': []
-        // 'episodes': [
-        //   // {
-        //   //   'name': '',
-        //   //   'photo_url': '',
-        //   //   'url': '',
-        //   //   'season': 'slug'
-        //   // }
-        // ]
-      },
-      episode: {
-        'name': '',
-        'photo_url': '',
-        'url': '',
-        'season': ''
-      },
-      slug: '',
-      seasones: []
-    }
+  computed: {
+    ...mapGetters('seasonesModule', ['seasones']),
+    ...mapGetters('seasonModule', ['newSeason']),
+    ...mapGetters('videoModule', ['episode'])
   },
   methods: {
     createSeason () {
-      api.postSeason(this.season)
-        .then(data => {
-          console.log(data)
-        })
-        .catch(error => {
-          console.log(error)
-        })
+      this.$store.dispatch('seasonModule/createSeason', this.newSeason)
     },
     createEpisode () {
-      api.postVideo(this.episode)
-        .then(data => {
-          console.log(data)
-        })
-        .catch(error => {
-          console.log(error)
-        })
-    },
-    getSeasonSlug () {
-      api.getSeasones()
-        .then(data => {
-          console.log(data)
-          this.seasones = data
-        })
+      this.$store.dispatch('videoModule/createVideo', this.episode)
     }
   },
   // watch: {
@@ -101,9 +61,8 @@ export default {
   //     // console.log(this.$route.query.page)
   //   }
   // }
-  created () {
-    this.getSeasonSlug()
-  }
+  // created () {
+  // }
 }
 </script>
 

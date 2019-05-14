@@ -2,7 +2,7 @@
   <div>
     <div v-if="this.isAuthentcated" class="has-text-centered content">
       Welcome to your home
-      <button  class="button" type="button is-denger" v-on:click="logout">logout</button>
+      <button  class="button is-danger" type="button" v-on:click="logout">logout</button>
     </div>
 
     <div v-else>
@@ -37,42 +37,27 @@
 </template>
 
 <script>
-import api from '@/api/index.js'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   data () {
     return {
       username: '',
-      password: '',
-      isAuthentcated: false
+      password: ''
     }
+  },
+  computed: {
+    ...mapGetters(['isAuthentcated'])
   },
   methods: {
+    ...mapActions({
+      logout: 'logout'
+    }),
     login () {
-      api.login({'username': this.username, 'password': this.password})
-        .then((data) => {
-          window.localStorage.setItem('token', data.access)
-          window.localStorage.setItem('tokenExpiration', data.refresh)
-          this.isAuthentcated = true
+      this.$store.dispatch('login', {username: this.username, password: this.password})
+        .then(() => {
           this.username = ''
           this.password = ''
-          console.log(data)
         })
-        .catch(() => window.alert('Could not login!'))
-    },
-    logout () {
-      // window.localStorage.setItem('token', null)
-      // window.localStorage.setItem('tokenExpiration', null)
-      window.localStorage.removeItem('token')
-      window.localStorage.removeItem('tokenExpiration')
-      this.isAuthentcated = false
-    }
-  },
-  created () {
-    let expiration = window.localStorage.getItem('tokenExpiration')
-    // var unixTimestamp = new Date().getTime() / 1000
-    if (expiration !== null) {
-      // && parseInt(expiration) - unixTimestamp > 0
-      this.isAuthentcated = true
     }
   }
 }

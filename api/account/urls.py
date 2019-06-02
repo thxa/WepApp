@@ -7,6 +7,7 @@ from . import views
 urlpatterns = [
     # path('token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     # path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    path('', views.APIRoot.as_view()),
     path('signup/', views.SignUp.as_view(), name="signup"),
     # path('login/', views.LoginAPIView.as_view(), name="login"),
     path('login/', obtain_auth_token, name="login")

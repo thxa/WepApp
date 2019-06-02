@@ -1,195 +1,54 @@
-from django.shortcuts import get_object_or_404
+# From rest framework
+from rest_framework import permissions, viewsets
 
-from rest_framework import status
-from rest_framework.decorators import api_view
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
-
+# From Main App
 from .models import Video, Category, Season
-from . import serializers
-from . import permissions
+from .serializers import SeasonSerializer, CategorySerializer, VideoSerializer
+from .permissions import IsOwnerOrReadOnly
 
 
-@api_view(['GET'])
-def hello_web(request):
-    """
-     Test api .
-    """
-    if request.method == 'GET':
-        data = {'content': 'hello web'}
+class SeasonViewSet(viewsets.ModelViewSet):
+    queryset = Season.objects.all()
+    lookup_field = 'slug'
+    serializer_class = SeasonSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
+                          IsOwnerOrReadOnly,)
 
-        return Response(data)
-
-
-class VideoListAPIView(APIView):
-    '''  This is Video List API View   '''
-    serializer_class = serializers.VideoSerializer
-    permission_classes = (IsAuthenticatedOrReadOnly,
-                          permissions.IsOwnerOrReadOnly)
-
-    def get(self, request, format=None):
-        videos = Video.objects.all()
-        serializer = serializers.VideoSerializer(videos, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, format=None):
-        serializer = serializers.VideoSerializer(data=request.data)
-
-        if serializer.is_valid():
-            serializer.save(owner=self.request.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 
-class VideoDetileAPIView(APIView):
-    ''' This is Video Detile API View  '''
-    serializer_class = serializers.VideoSerializer
-    permission_classes = (IsAuthenticatedOrReadOnly,
-                          permissions.IsOwnerOrReadOnly)
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    allowed_methods = ('GET', 'OPTIONS', 'HEAD')
+    lookup_field = 'slug'
+    serializer_class = CategorySerializer
+    # permission_classes = (permissions.IsAdminUser,)
 
-    def get(self, request, slug, format=None):
-        video = get_object_or_404(Video, slug=slug)
-        serializer = serializers.VideoSerializer(video)
-        return Response(serializer.data)
-
-    # def post(self, request, format=None):pass
-
-    def put(self, request, slug, format=None):
-        video = get_object_or_404(Video, slug=slug)
-        serializer = serializers.VideoSerializer(video, data=request.data)
-
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def patch(self, request, slug, format=None):
-        video = get_object_or_404(Video, slug=slug)
-        serializer = serializers.VideoSerializer(video, data=request.data)
-
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, slug, format=None):
-        video = get_object_or_404(Video, slug=slug)
-        video.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    def perform_create(self, serializer):
+        serializer.save()
 
 
-class CategoryListAPIView(APIView):
-    '''  This is Category List API View   '''
-    serializer_class = serializers.CategorySerializer
-    permission_classes = (IsAuthenticatedOrReadOnly)
+class VideoViewSet(viewsets.ModelViewSet):
+    queryset = Video.objects.all()
+    lookup_field = 'slug'
+    serializer_class = VideoSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
+                          IsOwnerOrReadOnly,)
 
-    def get(self, request ,format=None):
-        categories = Category.objects.all()
-        serializer = serializers.CategorySerializer(categories, many=True)
-        return Response(serializer.data)
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
-    def post(self, request, format=None):
-        serializer = serializers.CategorySerializer(data=request.data)
-
-        if serializer.is_valid():
-
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    # @action(detail=True, renderer_classes=[renderers.StaticHTMLRenderer])
+    # # def video(self, request, *args, **kwargs):
+    # #     video = self.get_object()
+    # #     return Response(video)
 
 
-class CategoryDetileAPIView(APIView):
-    ''' This is Category Detile API View  '''
-    serializer_class = serializers.CategorySerializer
-    permission_classes = (IsAuthenticatedOrReadOnly,
-                          permissions.IsOwnerOrReadOnly)
-
-    def get(self, request, slug, format=None):
-        category = get_object_or_404(Category, slug=slug)
-        serializer = serializers.CategorySerializer(category)
-        return Response(serializer.data)
-
-    # def post(self, request, format=None):pass
-
-    def put(self, request, slug, format=None):
-        category = get_object_or_404(Category, slug=slug)
-        serializer = serializers.CategorySerializer(category, data=request.data)
-
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def patch(self, request, slug, format=None):
-        category = get_object_or_404(Category, slug=slug)
-        serializer = serializers.CategorySerializer(category, data=request.data)
-
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, slug, format=None):
-        category = get_object_or_404(Category, slug=slug)
-        category.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-class SeasonListAPIView(APIView):
-    '''  This is Season List API View   '''
-    serializer_class = serializers.SeasonSerializer
-    permission_classes = (IsAuthenticatedOrReadOnly,
-                          permissions.IsOwnerOrReadOnly,)
-
-    def get(self, request, format=None):
-        seasones = Season.objects.all()
-        serializer = serializers.SeasonSerializer(seasones, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, format=None):
-        serializer = serializers.SeasonSerializer(data=request.data)
-
-        if serializer.is_valid():
-            serializer.save(owner=self.request.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-class SeasonDetileAPIView(APIView):
-    ''' This is Season Detile API View  '''
-    serializer_class = serializers.SeasonSerializer
-    permission_classes = (IsAuthenticatedOrReadOnly,
-                          permissions.IsOwnerOrReadOnly)
-
-    def get(self, request, slug, format=None):
-        season = get_object_or_404(Season, slug=slug)
-        serializer = serializers.SeasonSerializer(season)
-        # season.get_next_in_order()
-        # serializer.data["next"] = season.video.get_next_in_order()
-        return Response(serializer.data)
-
-    # def post(self, request, format=None):pass
-
-    def put(self, request, slug, format=None):
-        season = get_object_or_404(Season, slug=slug)
-        serializer = serializers.CategorySerializer(season, data=request.data)
-
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def patch(self, request, slug, format=None):
-        season = get_object_or_404(Season, slug=slug)
-        serializer = serializers.SeasonSerializer(season, data=request.data)
-
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, slug, format=None):
-        season = get_object_or_404(Season, slug=slug)
-        season.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+# class SearchListView(generics.ListAPIView):
+#     serializer_class = SeasonSerializer
+#     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+#
+#     queryset = Season.objects.all()
+#     filter_backends = (filters.SearchFilter,)
+#     search_fields = ('name',)

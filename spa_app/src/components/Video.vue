@@ -4,7 +4,7 @@
       {{video.name}}
     </div>
     <div class="">
-      <iframe :src="video.url" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+      <iframe :src="video.video_url" width="640" height="360" frameborder="0" allowfullscreen></iframe>
     </div>
     <div class="">
       <nav class="pagination" role="navigation" aria-label="pagination">

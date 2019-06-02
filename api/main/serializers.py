@@ -66,7 +66,7 @@ class SeasonSerializer(serializers.HyperlinkedModelSerializer):
     #     lookup_field="slug"
     # )
     category = CategorySerializer(many=True, read_only=True)
-    episodes = VideoSerializer(many=True)
+    episodes = VideoSerializer(many=True, read_only=True)
 
     class Meta:
         model = Season
@@ -77,10 +77,10 @@ class SeasonSerializer(serializers.HyperlinkedModelSerializer):
         # extra_kwargs = {
         #     'url': {'lookup_field': 'slug'}
         # }
-
+        #
         # def create(self, validated_data):
         #     videos_data = validated_data.pop('episodes')
-        #     categories_data = validated_data.pop('category')
+        #     # categories_data = validated_data.pop('category')
         #     season = Season.objects.create(**validated_data)
         #
         #     # Added video list

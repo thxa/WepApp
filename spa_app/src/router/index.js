@@ -9,7 +9,7 @@ import Create from '@/components/Create'
 import Video from '@/components/Video'
 import Videos from '@/components/Videos'
 import Signin from '@/components/Signin'
-
+import Signup from '@/components/Signup'
 // const Index = () => System.import('@/components/Index.vue')
 // const About = () => System.import('@/components/About.vue')
 // const NotFound = () => System.import('@/components/NotFound.vue')
@@ -35,6 +35,11 @@ export default new Router({
       path: '/signin/',
       name: 'Signin',
       component: Signin
+    },
+    {
+      path: '/signup/',
+      name: 'Signup',
+      component: Signup
     },
     {
       path: '*',

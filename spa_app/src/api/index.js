@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://127.0.0.1'
+axios.defaults.baseURL = 'http://127.0.0.1:8000'
 
 axios.interceptors.request.use((config) => {
   if (typeof window === 'undefined') {
@@ -8,7 +8,8 @@ axios.interceptors.request.use((config) => {
   }
   const token = window.localStorage.getItem('token')
   if (token) {
-    config.headers.Authorization = `Bearer ${token}`
+    // config.headers.Authorization = `Bearer ${token}` // this is JWT
+    config.headers.Authorization = `Token ${token}` // this is Token
   }
 
   return config
@@ -149,7 +150,29 @@ const api = {
   },
   login (credentials) {
     return new Promise((resolve, reject) => {
-      axios.post('/api/auth/token/', credentials)
+      axios.post('/api/auth/login/', credentials)
+        .then(response => {
+          resolve(response.data)
+        })
+        .catch(response => {
+          reject(response.status)
+        })
+    })
+  },
+  signUp (credentials) {
+    return new Promise((resolve, reject) => {
+      axios.post('/api/auth/signup/', credentials)
+        .then(response => {
+          resolve(response.data)
+        })
+        .catch(error => {
+          reject(error.status)
+        })
+    })
+  },
+  searchSeason (seasoName) {
+    return new Promise((resolve, reject) => {
+      axios.post(`/api/v1/search/?search=${name}`)
         .then(response => {
           resolve(response.data)
         })

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <div v-if="this.isAuthentcated" class="has-text-centered content">
       Welcome to your home
       <button  class="button is-danger" type="button" v-on:click="logout">logout</button>

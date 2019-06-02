@@ -5,6 +5,8 @@ import seasonesModule from './seasones.js'
 import seasonModule from './season.js'
 import videosModule from './videos.js'
 import videoModule from './video.js'
+import searchModule from './search.js'
+import signUpModule from './signup.js'
 
 Vue.use(Vuex)
 
@@ -17,7 +19,9 @@ const store = new Vuex.Store({
     seasonesModule,
     seasonModule,
     videosModule,
-    videoModule
+    videoModule,
+    searchModule,
+    signUpModule
   },
   state,
   getters: {
@@ -50,8 +54,9 @@ const store = new Vuex.Store({
     },
     login (state, token) {
       if (typeof window !== 'undefined') {
-        window.localStorage.setItem('token', token.access)
-        window.localStorage.setItem('tokenExpiration', token.refresh)
+        window.localStorage.setItem('token', token.token)
+        // window.localStorage.setItem('token', token.access)
+        // window.localStorage.setItem('tokenExpiration', token.refresh)
       }
       state.isAuthentcated = true
     }
@@ -60,9 +65,10 @@ const store = new Vuex.Store({
 
 if (typeof window !== 'undefined') {
   document.addEventListener('DOMContentLoaded', (event) => {
-    let expiration = window.localStorage.getItem('tokenExpiration')
+    let token = window.localStorage.getItem('token')
+    // let expiration = window.localStorage.getItem('tokenExpiration')
     // var unixTimestamp = new Date().getTime() / 1000
-    if (expiration !== null) {
+    if (token !== null) {
       // && parseInt(expiration) - unixTimestamp > 0
       store.state.isAuthentcated = true
     }

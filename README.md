@@ -2,14 +2,16 @@
 #### How do we Running project?
     sudo docker-compose up --build
 
-#####OR
+<h5>OR</h5>
 
     sudo docker-compose up -d --build
 
-#### How do we Remove project?
+<h4> How do we Remove project?</h4>
+
     sudo docker-compose down
 
-#### How do we create super user?
+<h4> How do we create super user?</h4>
+
     sudo docker-compose run web python3 manage.py createsuperuser
  <hr>
      
@@ -18,8 +20,10 @@
 - <a href="https://docs.python.org/3/">Python</a>
 
 #### Python Framework: 
-- <a href="https://docs.djangoproject.com/en/2.1/">Django</a> 
+- <a href="https://docs.djangoproject.com/en/2.1/">Django</a>
+    - <a href="https://forums.coretabs.net/t/%D9%81%D9%87%D8%B1%D8%B3-%D9%85%D9%88%D8%B6%D9%88%D8%B9%D8%A7%D8%AA-%D9%88%D8%B1%D8%B4%D8%A9-%D8%AA%D8%B7%D9%88%D9%8A%D8%B1-%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%D8%A7%D8%AA-%D8%A7%D9%84%D9%88%D9%8A%D8%A8-%D8%A8%D8%A7%D8%B3%D8%AA%D8%AE%D8%AF%D8%A7%D9%85-django/58">Practice: with the best community as coretabs</a>
 - <a href="https://www.django-rest-framework.org/">DjangoRestFramework</a>
+    - <a href="https://buildmedia.readthedocs.org/media/pdf/djangoapibook/latest/djangoapibook.pdf">Book: Building APIs with Django and Django Rest FrameworkRelease 2.0</a>
 
 #### CORS in Django REST Framework
 - <a href="https://www.techiediaries.com/django-cors/">Django cors</a>

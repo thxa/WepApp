@@ -53,7 +53,7 @@ export default {
     createEpisode () {
       this.$store.dispatch('videoModule/createVideo', this.episode)
     }
-  },
+  }
   // watch: {
   //   '$route' (to, from) {
   //     // this.slug = to.params.slug

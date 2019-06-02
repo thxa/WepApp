@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="container">
     <div class="columns is-desktop">
       <router-link class="column  is-one-quarter"
       v-for="video in videos"

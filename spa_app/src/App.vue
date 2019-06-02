@@ -1,13 +1,19 @@
 <template>
-    <section class="hero is-danger is-medium">
+  <div>
+    <header>
       <Header></Header>
-      <div class="hero-body">
-        <div class="container">
-          <router-view/>
-        </div>
+    </header>
+
+    <main class="main">
+      <div class="container">
+        <router-view/>
       </div>
+    </main>
+
+    <footer>
       <Footer></Footer>
-    </section>
+    </footer>
+  </div>
 </template>
 
 <script>

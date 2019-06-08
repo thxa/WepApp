@@ -53,22 +53,27 @@ class Season(models.Model):
 class Video(models.Model):
     owner = models.ForeignKey(User, related_name='videos', on_delete=models.CASCADE)
     name = models.CharField(max_length=50, unique=True, null=False, blank=False)
+    # name = models.PositiveSmallIntegerField(blank=False)
     photo_url = models.URLField(blank=True)
     video_url = models.URLField(blank=True)
     created = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(blank=True, unique=True)
     # category = models.ManyToManyField(Category, related_name="videos", blank=False)
-    season = models.ForeignKey(Season, on_delete=models.CASCADE, related_name="episodes", null=False)
+    season = models.ForeignKey(Season, on_delete=models.CASCADE, related_name="episodes", null=True)
 
     # next = connect with next video
     # prev = connect with prev video
 
     def __str__(self):
-        return self.name
+        return f"{self.season.name}-{self.name}"
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.slug = slugify(self.name)
+            self.slug = slugify(f"{self.season.name}-{self.name}")
+
+        if not self.photo_url:
+            self.photo_url = self.season.photo_url
+
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):

@@ -1,9 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import api from '@/api/index.js'
-import seasonesModule from './seasones.js'
 import seasonModule from './season.js'
-import videosModule from './videos.js'
 import videoModule from './video.js'
 import searchModule from './search.js'
 import signUpModule from './signup.js'
@@ -16,9 +14,7 @@ const state = {
 
 const store = new Vuex.Store({
   modules: {
-    seasonesModule,
     seasonModule,
-    videosModule,
     videoModule,
     searchModule,
     signUpModule

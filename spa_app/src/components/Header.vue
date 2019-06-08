@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <header>
       <nav class="navbar">
         <div class="container">
           <div class="navbar-brand">
@@ -44,7 +44,7 @@
           </div>
         </div>
       </nav>
-    </div>
+    </header>
 </template>
 
 <script>

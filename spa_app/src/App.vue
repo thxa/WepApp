@@ -1,8 +1,6 @@
 <template>
   <div>
-    <header>
-      <Header></Header>
-    </header>
+    <Header></Header>
 
     <main class="main">
       <div class="container">
@@ -10,9 +8,7 @@
       </div>
     </main>
 
-    <footer>
-      <Footer></Footer>
-    </footer>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -30,4 +26,6 @@ export default {
 </script>
 
 <style>
+@import '../static/css/bulma.min.css';
+
 </style>

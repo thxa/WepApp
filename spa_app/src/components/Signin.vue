@@ -6,17 +6,20 @@
     </div>
 
     <div v-else>
+      <!-- username field -->
       <div class="field">
         <p class="control has-icons-left has-icons-right">
           <input class="input" v-model="username" type="text" placeholder="username">
           <span class="icon is-small is-left">
-            <i class="fas fa-envelope"></i>
+            <i class="fas fa-user"></i>
           </span>
           <span class="icon is-small is-right">
             <i class="fas fa-check"></i>
           </span>
         </p>
       </div>
+
+      <!-- password field -->
       <div class="field">
         <p class="control has-icons-left">
           <input class="input" v-model="password" type="password" placeholder="Password">
@@ -25,6 +28,8 @@
           </span>
         </p>
       </div>
+
+      <!-- Login field -->
       <div class="field">
         <p class="control">
           <button v-on:click="login()" class="button is-success">

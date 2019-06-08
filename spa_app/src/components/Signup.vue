@@ -4,7 +4,7 @@
         <p class="control has-icons-left has-icons-right">
           <input class="input" v-model="user.username" type="text" placeholder="username">
           <span class="icon is-small is-left">
-            <i class="fas fa-envelope"></i>
+            <i class="fas fa-user"></i>
           </span>
           <span class="icon is-small is-right">
             <i class="fas fa-check"></i>
@@ -62,10 +62,10 @@ export default {
   methods: {
     signUp () {
       this.$store.dispatch('signUpModule/signUp', this.user)
-      .then(() => {
-        this.user.username = ''
-        this.user.password = ''
-      })
+        .then(() => {
+          this.user.username = ''
+          this.user.password = ''
+        })
     }
   }
 }

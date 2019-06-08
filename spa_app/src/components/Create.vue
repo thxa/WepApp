@@ -11,29 +11,20 @@
         </div> -->
     Number of episodes
      <input class="input" type="number" v-model="newSeason.number_of_episodes">
-        photo url <input class="input" type="url" v-model="newSeason.photo_url">
+        photo url <input class="input input-url" type="url" v-model="newSeason.photo_url">
       <button class="button" v-on:click="createSeason()">send</button>
       <!-- is-loading -->
     </div>
-    <hr>
-    <div class="">
-    <div class="">
-      <div class="is-size">episode</div>
-        Name <input class="input" type="text" v-model="episode.name">
-        </div>
-     photo url <input class="input" type="url" v-model="episode.photo_url">
-     Video url <input class="input" type="url" v-model="episode.url">
-     season
-     <div class="select is-rounded">
-     <select v-model="episode.season">
-       <option
-       v-for="season in seasones"
-       v-bind:key="season.id">{{season.slug}}</option>
-     </select>
-   </div>
-      <button class="button" v-on:click="createEpisode()">send</button>
-      <!-- is-loading -->
-    </div>
+    <!-- <hr>
+    <div>
+      <div>episode</div>
+       Name <input class="input" type="text" v-model="episode.name">
+       photo url <input class="input" type="url" v-model="episode.photo_url">
+       Video url <input class="input" type="url" v-model="episode.url">
+        <button class="button" v-on:click="createEpisode()">send</button>
+        is-loading
+
+      </div> -->
   </div>
 </template>
 
@@ -42,16 +33,11 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'Create',
   computed: {
-    ...mapGetters('seasonesModule', ['seasones']),
-    ...mapGetters('seasonModule', ['newSeason']),
-    ...mapGetters('videoModule', ['episode'])
+    ...mapGetters('seasonModule', ['newSeason'])
   },
   methods: {
     createSeason () {
       this.$store.dispatch('seasonModule/createSeason', this.newSeason)
-    },
-    createEpisode () {
-      this.$store.dispatch('videoModule/createVideo', this.episode)
     }
   }
   // watch: {

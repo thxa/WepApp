@@ -1,20 +1,29 @@
 import api from '@/api/index.js'
 
 const state = {
+  seasones: [],
   season: {},
   newSeason: {
     'name': '',
     'photo_url': '',
-    'number_of_episodes': 1
+    'number_of_episodes': 1,
+    'category': [],
+    'episodes': []
   }
 }
 
 const getters = {
+  seasones: state => state.seasones,
   season: state => state.season,
   newSeason: state => state.newSeason
 }
 
 const actions = {
+  loadSeasones (context) {
+    api.getSeasones().then(data => {
+      context.commit('loadSeasones', { seasones: data })
+    })
+  },
   loadSeason (context, slug) {
     api.getSeason(slug)
       .then(data => {
@@ -52,11 +61,15 @@ const actions = {
 }
 
 const mutations = {
+  loadSeasones (state, data) {
+    state.seasones = data.seasones
+  },
   loadSeason (state, data) {
     state.season = data.season
   },
   createSeason (state, data) {
-    state.season = data.season
+    // state.season = data.season
+    window.alert('success')
   },
   updateSeason (state, data) {
     state.season = data.season

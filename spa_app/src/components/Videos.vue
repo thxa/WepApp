@@ -24,11 +24,11 @@ export default {
     'box': Box
   },
   computed: {
-    ...mapGetters('videosModule', ['videos'])
+    ...mapGetters('videoModule', ['videos'])
   },
   methods: {
     loadVideos () {
-      this.$store.dispatch('videosModule/loadVideos')
+      this.$store.dispatch('videoModule/loadVideos')
     }
   },
   watch: {

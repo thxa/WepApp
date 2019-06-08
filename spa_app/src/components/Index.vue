@@ -11,7 +11,7 @@
         <div class="container has-text-centered">
             <div v-if="videos"
             class="columns is-desktop">
-            <videos></videos/>
+            <videos></videos>
                 <!-- <router-link
                 :to="{ name: 'Video', params: { slug: video.slug} }"
                 class="column is-one-quarter"
@@ -73,8 +73,8 @@ export default {
     'videos': Videos
   },
   computed: {
-    ...mapGetters('seasonesModule', ['seasones']),
-    ...mapGetters('videosModule', ['videos'])
+    ...mapGetters('seasonModule', ['seasones']),
+    ...mapGetters('videoModule', ['videos'])
   },
   methods: {
     loadSeasones () {
@@ -88,7 +88,7 @@ export default {
       // } else {
       //   this.seasones = this.season
       // }
-      this.$store.dispatch('seasonesModule/updateSeasones')
+      this.$store.dispatch('seasonModule/loadSeasones')
     }
     // loadVideos () {
     //   this.$store.dispatch('videosModule/loadVideos')

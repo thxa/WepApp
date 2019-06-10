@@ -36,7 +36,7 @@
 
       <div>
         <!-- episodes -->
-        <div class="has-text-6 has-text-centered">
+        <div class="has-text-centered">
           episodes
         </div>
         <hr>
@@ -72,6 +72,8 @@
   </div>
 
     <hr>
+    <!-- create episode -->
+    <div v-if="isAuthentcated">
       <!-- video name -->
       <div class="field">
         <p class="control has-icons-left has-icons-right">
@@ -109,6 +111,7 @@
       </div>
       <button class="button is-success" v-on:click="createVideo()">create</button>
     </div>
+  </div>
 </template>
 
 <script>

@@ -25,7 +25,7 @@ export default {
 }
 </script>
 
-<style>
-@import '../static/css/bulma.min.css';
+<style lang="sass">
+@import 'bulma'
 
 </style>

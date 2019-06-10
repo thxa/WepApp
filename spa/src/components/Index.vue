@@ -12,16 +12,6 @@
             <div v-if="videos"
             class="columns is-desktop">
             <videos></videos>
-                <!-- <router-link
-                :to="{ name: 'Video', params: { slug: video.slug} }"
-                class="column is-one-quarter"
-                v-for="video in videos"
-                v-bind:key="video.id">
-                <box :link="video.link">
-                  <h3 slot="name">{{video.name}}</h3>
-                  <img slot="photo_url" :src="video.photo_url">
-                </box>
-              </router-link> -->
           </div>
           <div v-else class="notification is-warning">
               Nothing
@@ -41,7 +31,6 @@
       <div class="container has-text-centered">
         <div class="columns is-desktop">
             <router-link
-            v-if="seasones !== [] && season !== 'undefined'"
             :to="{ name: 'Season', params: { slug: season.slug} }"
             class="column is-one-quarter"
             v-for="season in seasones"
@@ -51,10 +40,6 @@
               <img slot="photo_url" :src="season.photo_url">
             </box>
           </router-link>
-
-          <div v-else>
-            nothing
-          </div>
         </div>
       </div>
     </div>

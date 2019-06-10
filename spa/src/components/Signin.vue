@@ -58,7 +58,7 @@ export default {
       logout: 'logout'
     }),
     login () {
-      this.$store.dispatch('login', {username: this.username, password: this.password})
+      this.$store.dispatch('login', { username: this.username, password: this.password })
         .then(() => {
           this.username = ''
           this.password = ''

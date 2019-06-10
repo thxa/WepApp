@@ -1,10 +1,11 @@
 <template>
-  <div class="has-text-centered">
+  <div class="container has-text-centered">
     <div class="title">
       {{video.name}}
     </div>
-    <div class="">
-      <iframe :src="video.video_url" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+    <div class="is-fullwidth">
+      <!-- <iframe :src="video.video_url" allowfullscreen="true" allowscriptaccess="always" ></iframe> -->
+      <iframe  :src="video.video_url" width="640" height="360" frameborder="0" allowfullscreen></iframe>
     </div>
     <div class="">
       <nav class="pagination" role="navigation" aria-label="pagination">
@@ -34,6 +35,12 @@ export default {
     loadVideo () {
       this.slug = this.$route.params.slug
       this.$store.dispatch('videoModule/loadVideo', this.slug)
+    },
+    updateVideo () {
+      this.$store.dispatch('videoModule/upadteVideo', this.slug, this.video)
+    },
+    deleteVideo () {
+      this.$store.dispatch('videoModule/deleteVideo', this.slug)
     },
     nextVideo () {
       console.log('next Video')

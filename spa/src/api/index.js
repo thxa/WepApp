@@ -170,9 +170,9 @@ const api = {
         })
     })
   },
-  searchSeason (seasoName) {
+  searchSeason (seasonName) {
     return new Promise((resolve, reject) => {
-      axios.post(`/api/v1/search/?search=${name}`)
+      axios.get(`/api/v1/seasones/?search=${seasonName}`)
         .then(response => {
           resolve(response.data)
         })
@@ -182,5 +182,4 @@ const api = {
     })
   }
 }
-
 export default api

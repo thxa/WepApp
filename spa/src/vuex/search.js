@@ -1,25 +1,27 @@
 import api from '@/api/index.js'
 
 const state = {
-  searchSeason: []
+  seasonName: '',
+  seasonesResult: []
 }
 
 const getters = {
-  searchSeason: state => state.searchSeason
+  seasonName: state => state.seasonName,
+  seasonesResult: state => state.seasonesResult
 }
 
 const actions = {
-  search (context, nameSeason) {
-    api.FilterSeason(nameSeason)
+  searchSeason (context, seasonName) {
+    api.searchSeason(seasonName)
       .then(data => {
-        context.commit('searchSeason', { searchSeason: data })
+        context.commit('searchSeason', { seasonesResult: data })
       })
   }
 }
 
 const mutations = {
   searchSeason (state, data) {
-    state.searchSeason = data.searchSeason
+    state.seasonesResult = data.seasonesResult
   }
 }
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header></Header>
+    <app-header></app-header>
 
     <main class="main">
       <div class="container">
@@ -8,7 +8,7 @@
       </div>
     </main>
 
-    <Footer></Footer>
+    <app-footer></app-footer>
   </div>
 </template>
 
@@ -19,13 +19,12 @@ import Footer from '@/components/Footer.vue'
 export default {
   name: 'App',
   components: {
-    Header,
-    Footer
+    'app-header': Header,
+    'app-footer': Footer
   }
 }
 </script>
 
 <style lang="sass">
 @import 'bulma'
-
 </style>

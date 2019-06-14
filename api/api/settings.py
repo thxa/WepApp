@@ -70,7 +70,8 @@ WSGI_APPLICATION = 'api.wsgi.application'
 # https://github.com/ottoyiu/django-cors-headers
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
-    '127.0.0.1:8080',
+    '127.0.0.1:80',
+    '127.0.0.1:8080'
 )
 
 # Database
@@ -116,6 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'ar-sa'
 
 TIME_ZONE = 'UTC'
 

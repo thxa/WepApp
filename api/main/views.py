@@ -1,5 +1,5 @@
 # From rest framework
-from rest_framework import permissions, viewsets
+from rest_framework import permissions, viewsets, filters
 
 # From Main App
 from .models import Video, Category, Season
@@ -13,6 +13,9 @@ class SeasonViewSet(viewsets.ModelViewSet):
     serializer_class = SeasonSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,
                           IsOwnerOrReadOnly,)
+
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('name',)
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)

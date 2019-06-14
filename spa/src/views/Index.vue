@@ -55,7 +55,7 @@ export default {
   name: 'Index',
   components: {
     'box': Box,
-    'videos': Videos
+    'videos': Videos,
   },
   computed: {
     ...mapGetters('seasonModule', ['seasones']),

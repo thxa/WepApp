@@ -1,18 +1,25 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Index from '@/components/Index'
+import Index from '@/views/Index'
 import About from '@/components/About'
 import NotFound from '@/components/NotFound'
 import SeasonDeteiles from '@/components/SeasonDeteiles'
 import Create from '@/components/Create'
 import Video from '@/components/Video'
 import Videos from '@/components/Videos'
-import Signin from '@/components/Signin'
-import Signup from '@/components/Signup'
-// const Index = () => System.import('@/components/Index.vue')
-// const About = () => System.import('@/components/About.vue')
-// const NotFound = () => System.import('@/components/NotFound.vue')
+import Signin from '@/views/Signin'
+import Signup from '@/views/Signup'
+
+// const Index = () => System.import('@/views/Index.vue')
+// const About = () => System.import('@/views/About.vue')
+// const NotFound = () => System.import('@/views/NotFound.vue')
+// const SeasonDeteiles = () => System.import('@/components/SeasonDeteiles.vue')
+// const  Create = () => System.import('@/components/Create.vue)'
+// const Video = () => System.import('@/components/Video.vue')
+// const Videos = System.import('@/components/Videos.vue')
+// const Signin = () => System.import('@/views/Signin.vue')
+// const Signup = () => System.import('@/views/Signup.vue')
 
 Vue.use(Router)
 

@@ -64,6 +64,7 @@ export default {
       this.$store.dispatch('signUpModule/signUp', this.user)
         .then(() => {
           this.user.username = ''
+          this.user.email = ''
           this.user.password = ''
         })
     }

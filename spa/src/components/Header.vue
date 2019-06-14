@@ -14,16 +14,7 @@
           </div>
           <div id="navbarMenuHeroA" class="navbar-menu">
             <div class="navbar-start">
-              <div class="navbar-item field has-addons">
-                <div class="control">
-                  <input class="input is-rounded" v-model="this.searchSeason" type="text" placeholder="Find a Season">
-                </div>
-                <div class="control">
-                  <a class="button is-info">
-                    <i class="fas fa-search"></i>
-                  </a>
-                </div>
-              </div>
+              <search/>
             </div>
             <div class="navbar-end">
               <router-link class="navbar-item is-tab" to="/" exact>Home</router-link>
@@ -39,7 +30,7 @@
                   <span v-if="isAuthentcated">Profile</span>
                   <span v-else>sign in</span></router-link>
 
-              <router-link v-if="isAuthentcated === false" class="navbar-item is-tab" to="/signup/">signUp</router-link>
+              <router-link v-if="!isAuthentcated" class="navbar-item is-tab" to="/signup/">signUp</router-link>
             </div>
           </div>
         </div>
@@ -48,17 +39,15 @@
 </template>
 
 <script>
+import Search from '@/components/search.vue'
 import { mapGetters } from 'vuex'
 export default {
   name: 'Header',
-  computed: {
-    ...mapGetters(['isAuthentcated']),
-    ...mapGetters('searchModule', ['searchSeason'])
+  components: {
+    'search': Search
   },
-  methods: {
-    searchSeason () {
-      this.$store.dispatch('searchModule/searchSeason', this.searchSeason)
-    }
+  computed: {
+    ...mapGetters(['isAuthentcated'])
   }
 }
 document.addEventListener('DOMContentLoaded', () => {

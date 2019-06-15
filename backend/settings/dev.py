@@ -1,7 +1,8 @@
 import os
 # import timedelta
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SETTINGS_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(SETTINGS_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -16,7 +17,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
-# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -25,18 +25,24 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'whitenoise.runserver_nostatic',  # < Per Whitenoise, to disable built in
+
     'rest_framework',
     'rest_framework.authtoken',
     # 'rest_framework_simplejwt',
 
-    'main',
-    'account',
+    'backend.main',
+    'backend.account',
 
     'corsheaders',
 ]
+# Application definition
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -46,12 +52,35 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-ROOT_URLCONF = 'api.urls'
+ROOT_URLCONF = 'backend.urls'
+
+REST_FRAMEWORK = {
+
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+     ),
+
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ),
+
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
+
+    'DEFAULT_AUTHENTICATION_CLASSES':(
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+
+}
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['dist'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -64,7 +93,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'api.wsgi.application'
+WSGI_APPLICATION = 'backend.wsgi.application'
 
 
 # https://github.com/ottoyiu/django-cors-headers
@@ -127,43 +156,38 @@ USE_L10N = True
 
 USE_TZ = True
 
+# When Vue Builds, path will be `/static/css/...` so we will have Django Serve
+# In Production, it's recommended use an alternative approach such as:
+# http://whitenoise.evans.io/en/stable/django.html?highlight=django
+
+MIDDLEWARE_CLASSES = (
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'dist', 'static')
+# ]
 
-# STATIC_URL = '/static/'
-STATIC_URL = '/staticfiles/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'dist', 'static')
 
-MEDIA_URL = '/mediafiles/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+# STATIC_URL = '/staticfiles/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-REST_FRAMEWORK = {
+# MEDIA_URL = '/mediafiles/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
-    'DEFAULT_RENDERER_CLASSES': (
-        'rest_framework.renderers.JSONRenderer',
-        'rest_framework.renderers.BrowsableAPIRenderer',
-     ),
 
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-    ),
+##########
+# STATIC #
+##########
 
-    'DEFAULT_FILTER_BACKENDS': (
-        'django_filters.rest_framework.DjangoFilterBackend',
-    ),
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-    'DEFAULT_AUTHENTICATION_CLASSES':(
-        'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
 
-}
 
 # SIMPLE_JWT = {
 #     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),

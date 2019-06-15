@@ -1,8 +1,8 @@
-import axios from 'axios'
+import apiBase from '@/api/apiBase.js'
 
-axios.defaults.baseURL = 'http://127.0.0.1:8000'
+// axios.defaults.baseURL = 'http://0.0.0.0:8000'
 
-axios.interceptors.request.use((config) => {
+apiBase.interceptors.request.use((config) => {
   if (typeof window === 'undefined') {
     return config
   }
@@ -18,7 +18,7 @@ axios.interceptors.request.use((config) => {
 const api = {
   getSeasones () {
     return new Promise((resolve, reject) => {
-      axios.get(`/api/v1/seasones/`)
+      apiBase.get(`/api/v1/seasones/`)
         .then(response => {
           resolve(response.data)
         })
@@ -29,7 +29,7 @@ const api = {
   },
   getSeason (slug) {
     return new Promise((resolve, reject) => {
-      axios.get(`/api/v1/seasones/${slug}/`)
+      apiBase.get(`/api/v1/seasones/${slug}/`)
         .then(response => {
           resolve(response.data)
         })
@@ -40,7 +40,7 @@ const api = {
   },
   postSeason (season) {
     return new Promise((resolve, reject) => {
-      axios.post(`/api/v1/seasones/`, season)
+      apiBase.post(`/api/v1/seasones/`, season)
         .then(response => {
           resolve(response.data)
         })
@@ -51,7 +51,7 @@ const api = {
   },
   putSeason (slug, season) {
     return new Promise((resolve, reject) => {
-      axios.put(`/api/v1/seasones/${slug}/`, season)
+      apiBase.put(`/api/v1/seasones/${slug}/`, season)
         .then(response => {
           resolve(response.data)
         })
@@ -62,7 +62,7 @@ const api = {
   },
   patchSeason (slug, season) {
     return new Promise((resolve, reject) => {
-      axios.patch(`/api/v1/seasones/${slug}/`, season)
+      apiBase.patch(`/api/v1/seasones/${slug}/`, season)
         .then(response => {
           resolve(response.data)
         })
@@ -73,7 +73,7 @@ const api = {
   },
   deleteSeason (slug) {
     return new Promise((resolve, reject) => {
-      axios.delete(`/api/v1/seasones/${slug}/`)
+      apiBase.delete(`/api/v1/seasones/${slug}/`)
         .then(response => {
           resolve(response.data)
         })
@@ -84,7 +84,7 @@ const api = {
   },
   getVideo (slug) {
     return new Promise((resolve, reject) => {
-      axios.get(`/api/v1/videos/${slug}/`)
+      apiBase.get(`/api/v1/videos/${slug}/`)
         .then(response => {
           resolve(response.data)
         })
@@ -95,7 +95,7 @@ const api = {
   },
   postVideo (video) {
     return new Promise((resolve, reject) => {
-      axios.post(`/api/v1/videos/`, video)
+      apiBase.post(`/api/v1/videos/`, video)
         .then(response => {
           resolve(response.data)
         })
@@ -106,7 +106,7 @@ const api = {
   },
   putVideo (slug, video) {
     return new Promise((resolve, reject) => {
-      axios.put(`/api/v1/videos/${slug}/`, video)
+      apiBase.put(`/api/v1/videos/${slug}/`, video)
         .then(response => {
           resolve(response.data)
         })
@@ -117,7 +117,7 @@ const api = {
   },
   patchVideo (slug, video) {
     return new Promise((resolve, reject) => {
-      axios.patch(`/api/v1/videos/${slug}/`)
+      apiBase.patch(`/api/v1/videos/${slug}/`)
         .then(response => {
           resolve(response.data)
         })
@@ -128,7 +128,7 @@ const api = {
   },
   deleteVideo (slug) {
     return new Promise((resolve, reject) => {
-      axios.delete(`/api/v1/videos/${slug}/`)
+      apiBase.delete(`/api/v1/videos/${slug}/`)
         .then(response => {
           resolve(response.data)
         })
@@ -139,7 +139,7 @@ const api = {
   },
   getVideos () {
     return new Promise((resolve, reject) => {
-      axios.get(`/api/v1/videos/`)
+      apiBase.get(`/api/v1/videos/`)
         .then(response => {
           resolve(response.data)
         })
@@ -150,7 +150,7 @@ const api = {
   },
   login (credentials) {
     return new Promise((resolve, reject) => {
-      axios.post('/api/auth/login/', credentials)
+      apiBase.post('/api/auth/login/', credentials)
         .then(response => {
           resolve(response.data)
         })
@@ -161,7 +161,7 @@ const api = {
   },
   signUp (credentials) {
     return new Promise((resolve, reject) => {
-      axios.post('/api/auth/signup/', credentials)
+      apiBase.post('/api/auth/signup/', credentials)
         .then(response => {
           resolve(response.data)
         })
@@ -172,7 +172,7 @@ const api = {
   },
   searchSeason (seasonName) {
     return new Promise((resolve, reject) => {
-      axios.get(`/api/v1/seasones/?search=${seasonName}`)
+      apiBase.get(`/api/v1/seasones/?search=${seasonName}`)
         .then(response => {
           resolve(response.data)
         })

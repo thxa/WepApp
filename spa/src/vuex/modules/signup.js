@@ -33,7 +33,6 @@ const mutations = {
     state.coreect = data.user
   },
   signUpFailed (state, data) {
-    console.log(data.error)
     state.error = data.error
     // window.alert(data.error)
     // state.error = data.error

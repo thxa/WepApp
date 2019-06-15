@@ -28,7 +28,7 @@ RUN apk update \
 COPY ./entrypoint.sh /app/entrypoint.sh
 
 # add project
-ADD . /app
+ADD ./backend /app/backend
 
 # run entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]

@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 import api from '@/api/index.js'
 export default {
   name: 'search',
@@ -52,22 +52,22 @@ export default {
           })
         // this.$store.dispatch('searchModule/searchSeason', this.seasonName)
       }
-        this.seasonesResult = []
+      this.seasonesResult = []
     }
   }
 }
 </script>
 
-<style lang="sass">
+<style lang="scss" scoped>
 
   // color
-  $white: hsl(0, 0%, 100%)
-  $radius: 4px
+  $white: hsl(0, 0%, 100%);
+  $radius: 4px;
 
-  $dropdown-menu-min-width: 12rem
-  $dropdown-content-background-color: $white
-  $dropdown-content-radius: $radius
-  $dropdown-content-offset: 10px
+  $dropdown-menu-min-width: 12rem;
+  $dropdown-content-background-color: $white;
+  $dropdown-content-radius: $radius;
+  $dropdown-content-offset: 10px;
   // input[type=text] {
   //   width: 130px;
   //   -webkit-transition: width 0.4s ease-in-out;

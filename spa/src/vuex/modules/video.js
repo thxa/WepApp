@@ -43,7 +43,7 @@ const actions = {
         context.commit('updateVideo', { video: data })
       })
       .catch(error => {
-        console.log(error)
+        window.alert(error)
       })
   },
   patchVideo (context, slug, video) {
@@ -52,7 +52,7 @@ const actions = {
         context.commit('patchVideo', { video: data })
       })
       .catch(error => {
-        console.log(error)
+        window.alert(error)
       })
   },
   deleteVideo (context, slug) {
@@ -61,7 +61,7 @@ const actions = {
         context.commit('deleteVideo', { video: data })
       })
       .catch(error => {
-        console.log(error)
+        window.alert(error)
       })
   }
 }

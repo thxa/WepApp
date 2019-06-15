@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import api from '@/api/index.js'
-import seasonModule from './season.js'
-import videoModule from './video.js'
-import searchModule from './search.js'
-import signUpModule from './signup.js'
+import seasonModule from './modules/season.js'
+import videoModule from './modules/video.js'
+import searchModule from './modules/search.js'
+import signUpModule from './modules/signup.js'
 
 Vue.use(Vuex)
 

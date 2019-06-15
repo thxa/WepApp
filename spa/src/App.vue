@@ -25,6 +25,6 @@ export default {
 }
 </script>
 
-<style lang="sass">
-@import 'bulma'
+<style lang="scss">
+@import '~bulma';
 </style>

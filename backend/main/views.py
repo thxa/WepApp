@@ -8,6 +8,7 @@ from .permissions import IsOwnerOrReadOnly
 
 
 class SeasonViewSet(viewsets.ModelViewSet):
+    """ Season API """
     queryset = Season.objects.all()
     lookup_field = 'slug'
     serializer_class = SeasonSerializer
@@ -22,6 +23,7 @@ class SeasonViewSet(viewsets.ModelViewSet):
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
+    """ Category API """
     queryset = Category.objects.all()
     allowed_methods = ('GET', 'OPTIONS', 'HEAD')
     lookup_field = 'slug'
@@ -33,6 +35,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
 
 
 class VideoViewSet(viewsets.ModelViewSet):
+    """ Video API """
     queryset = Video.objects.all()
     lookup_field = 'slug'
     serializer_class = VideoSerializer

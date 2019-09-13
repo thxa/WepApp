@@ -2,13 +2,13 @@ version: '3'
 
 services:
   web:
-    build: ./api
+    build: .
     # command: python3 api/manage.py runserver 0.0.0.0:8000
-    command: gunicorn api.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn backend.wsgi:application --bind 0.0.0.0:8000
     # command: pwd
     volumes:
-      - ./api:/app/
-      - static_volume:/app/staticfiles
+      - .:/app/
+      - static_volume:/app/dist/static/
       - media_volume:/app/mediafiles
 
     # ports:
@@ -17,7 +17,6 @@ services:
       - 8000
     environment:
       - SECRET_KEY=please_change_me
-      - DEBUG=False
       - SQL_ENGINE=django.db.backends.postgresql
       - SQL_DATABASE=postgres
       - SQL_USER=postgres
@@ -32,28 +31,15 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
 
-  frontend:
-    build: ./spa_app
-    command: pwd
-    command: serve -s dist
-    volumes:
-      - ./spa_app:/app/spa
-    # expose:
-    #   - 5000
-    ports:
-      - "5000:5000"
-      
   nginx:
     build: ./nginx
-    # command: nginx -g daemon off;
     volumes:
-      - static_volume:/app/staticfiles
+      - static_volume:/app/dist/static/
       - media_volume:/app/mediafiles
     ports:
       - 80:80
     depends_on:
       - web
-      - frontend
 volumes:
   postgres_data:
   static_volume:

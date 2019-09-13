@@ -4,7 +4,6 @@
       {{video.name}}
     </div>
     <div class="is-fullwidth">
-      <!-- <iframe :src="video.video_url" allowfullscreen="true" allowscriptaccess="always" ></iframe> -->
       <iframe  :src="video.video_url" width="640" height="360" frameborder="0" allowfullscreen></iframe>
     </div>
     <div class="">
@@ -62,5 +61,10 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+iframe {
+  border: 0;
+  height: 450px;
+  width: 766px;
+}
 </style>

@@ -1,31 +1,30 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import System from 'System'
 
-import Index from '@/views/Index'
-import About from '@/components/About'
-import NotFound from '@/components/NotFound'
-import SeasonDeteiles from '@/components/SeasonDeteiles'
-import Create from '@/components/Create'
-import Video from '@/components/Video'
-import Videos from '@/components/Videos'
-import Signin from '@/views/Signin'
-import Signup from '@/views/Signup'
+// import Index from '@/views/Index'
+// import About from '@/components/About'
+// import NotFound from '@/components/NotFound'
+// import SeasonDeteiles from '@/components/SeasonDeteiles'
+// import Create from '@/components/Create'
+// import Video from '@/components/Video'
+// import Videos from '@/components/Videos'
+// import Signin from '@/views/Signin'
+// import Signup from '@/views/Signup'
 
-// const Index = () => import('@/views/Index.vue')
-// const About = () => import('@/components/About.vue')
-// const NotFound = () => import('@/components/NotFound.vue')
-// const SeasonDeteiles = () => import('@/components/SeasonDeteiles.vue')
-// const Create = () => import('@/components/Create.vue')
-// const Video = () => import('@/components/Video.vue')
-// const Videos = import('@/components/Videos.vue')
-// const Signin = () => import('@/views/Signin.vue')
-// const Signup = () => import('@/views/Signup.vue')
+const Index = () => import('@/views/Index.vue')
+const About = () => import('@/components/About.vue')
+const NotFound = () => import('@/components/NotFound.vue')
+const SeasonDeteiles = () => import('@/components/SeasonDeteiles.vue')
+const Create = () => import('@/components/Create.vue')
+const Video = () => import('@/components/Video.vue')
+const Videos = import('@/components/Videos.vue')
+const Signin = () => import('@/views/Signin.vue')
+const Signup = () => import('@/views/Signup.vue')
 
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+//  mode: 'history',
   base: process.env.BASE_URL,
   linkActiveClass: 'is-active',
   scrollBehavior: (to, from, savedPosition) => ({ y: 0 }),

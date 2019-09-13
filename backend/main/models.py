@@ -61,15 +61,18 @@ class Video(models.Model):
     # category = models.ManyToManyField(Category, related_name="videos", blank=False)
     season = models.ForeignKey(Season, on_delete=models.CASCADE, related_name="episodes", null=True)
 
-    # next = connect with next video
-    # prev = connect with prev video
+    # prev_shoe = Video._get_next_or_previous_by_FIELD(Video._meta.get_field('name'), False)
+    # next_shoe = Video._get_next_or_previous_by_FIELD(Video._meta.get_field('name'), True)
+
+    # next = move to next video
+    # prev = move to prev video
 
     def __str__(self):
-        return f"{self.season.name}-{self.name}"
+        return f"{self.season.name} {self.name}"
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.slug = slugify(f"{self.season.name}-{self.name}")
+            self.slug = slugify("%s %s" % (self.season.name, self.name))
 
         if not self.photo_url:
             self.photo_url = self.season.photo_url
@@ -79,5 +82,11 @@ class Video(models.Model):
     def get_absolute_url(self):
         return reverse_lazy('videos', args=[self.slug])
 
+    # def get_next_by_name(self, *args, **kwargs):
+    #     return self._get_next_or_previous_by_FIELD(self, self.name, True, **kwargs)
+    #
+    # def get_previous_by_name(self, **kwargs):
+    #     return self._get_next_or_previous_by_FIELD(self, self.name, False, **kwargs)
+
     class Meta:
-        ordering = ['created']
+        ordering = ['created', 'name']

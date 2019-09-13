@@ -94,9 +94,8 @@ class SeasonSerializer(serializers.HyperlinkedModelSerializer):
             Video.objects.create(season=season, **video_data)
 
         # Added category list
-
         for category_data in categories_data:
-            category.set(category_data)
+            Category.set(category_data)
             # Category.objects.create(**category_data)
 
         return season

@@ -5,8 +5,8 @@ django-filter==2.1.0
 django-timedeltafield==0.7.10
 djangorestframework==3.9.3
 gunicorn==19.9.0
-psycopg2==2.8.2
-psycopg2-binary==2.8.2
+#psycopg2==2.8.2
+#psycopg2-binary==2.8.2
 pytz==2018.9
 sqlparse==0.3.0
 whitenoise==4.1.2

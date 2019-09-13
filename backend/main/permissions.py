@@ -22,6 +22,5 @@ class IsAdminOrReadOnly(permissions.BasePermission):
         # so we'll always allow GET, HEAD or OPTIONS requests.
         if request.method in permissions.SAFE_METHODS:
             return True
-        print(request.user.is_superuser)
         # Write permissions are only allowed to the admin of the category.
         return request.user.is_superuser

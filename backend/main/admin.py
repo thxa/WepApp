@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Video, Category, Season
 
-# Register your models here.
+
 class InLineVideo(admin.TabularInline):
     model = Video
     extra = 1
@@ -9,7 +9,6 @@ class InLineVideo(admin.TabularInline):
 
 class SeasonAdmin(admin.ModelAdmin):
      inlines = [InLineVideo]
-
      # fields = ()#'id', 'name', 'slug', 'created', 'episodes')
      search_fields = ('name', 'slug')
      list_display = ('name', 'slug', 'created')#, 'category')
@@ -23,6 +22,7 @@ class VideoAdmin(admin.ModelAdmin):
      list_display = ('name', 'slug', 'created')
      list_display_links = ()
      list_filter = ('name', 'slug', 'created')
+
 
 class CategoryAdmin(admin.ModelAdmin):
      search_fields = ('name', 'slug')

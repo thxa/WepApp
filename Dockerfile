@@ -29,6 +29,6 @@ COPY ./entrypoint.sh /app/entrypoint.sh
 
 # add project
 ADD ./backend /app/backend
-
+ADD ./dist /app/
 # run entrypoint.sh
 ENTRYPOINT ["/app/entrypoint.sh"]

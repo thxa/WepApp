@@ -13,7 +13,7 @@ export default {
 
 <style>
 .card: {
-  /* padding-bottom: 40px; */
+  padding-bottom: 40px;
   height: 100%;
 }
 </style>

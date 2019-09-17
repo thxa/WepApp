@@ -19,26 +19,26 @@ const getters = {
 
 const actions = {
   loadVideos (context) {
-    api.getVideos()
+    api.videoAPI.getVideos()
       .then(data => {
         context.commit('loadVideos', { videos: data })
       })
   },
   loadVideo (context, slug) {
-    api.getVideo(slug)
+    api.videoAPI.getVideo(slug)
       .then(data => {
         context.commit('loadVideo', { video: data })
       })
   },
   createVideo (context, video) {
-    api.postVideo(video)
+    api.videoAPI.postVideo(video)
       .then(data => {
         context.commit('createVideo', { episode: data })
       })
       .catch(error => { window.alert(`error: ${error.status}`) })
   },
   updateVideo (context, slug, video) {
-    api.putVideo(slug, video)
+    api.videoAPI.putVideo(slug, video)
       .then(data => {
         context.commit('updateVideo', { video: data })
       })
@@ -47,7 +47,7 @@ const actions = {
       })
   },
   patchVideo (context, slug, video) {
-    api.patchVideo(slug, video)
+    api.videoAPI.patchVideo(slug, video)
       .then(data => {
         context.commit('patchVideo', { video: data })
       })
@@ -56,7 +56,7 @@ const actions = {
       })
   },
   deleteVideo (context, slug) {
-    api.deleteVideo(slug)
+    api.videoAPI.deleteVideo(slug)
       .then(data => {
         context.commit('deleteVideo', { video: data })
       })
@@ -74,8 +74,8 @@ const mutations = {
     state.video = data.video
   },
   createVideo (state, data) {
-    // state.episode = data.episode
-    window.alert('success')
+    state.episodes.push(data.episode)
+    // window.alert('success')
   },
   updateVideo (state, data) {
     state.video = data.video

@@ -10,7 +10,7 @@ name = "pypi"
 django= ">=2.2.1"
 gunicorn= "==19.9.0"
 django-cors-headers= "==2.5.1"
-djangorestframework= "==3.9.1"
+djangorestframework= "==3.11.2"
 
 [dev-packages]
 
